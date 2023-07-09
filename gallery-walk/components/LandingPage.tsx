@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import subLandingPage from './subLandingPage';
+
 
 
 const LandingPage = () => {
@@ -34,9 +34,15 @@ const LandingPage = () => {
           ></Image>
           </button>
         </div>
+        <Image
+        src="/Frame12.svg"
+        alt=""
+        width={184}
+        height={24}
+        />
       </div>
       <div>
-        <subLandingPage/>
+        
       </div>
     </div>
     
