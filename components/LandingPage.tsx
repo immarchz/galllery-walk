@@ -47,9 +47,6 @@ const eventArr:EventInterface[] = [
     location:"Chiangmai",
     price:200
   },
-]
-
-const eventArr2:EventInterface[]= [
   {
     linkTo:"/",
     img:"/bottomRight.svg",
@@ -76,11 +73,13 @@ const eventArr2:EventInterface[]= [
   },
 ]
 
+
+
 const LandingPage = () => {
 
   const showevents = maineventsArr;
-  const topevents = eventArr;
-  const bottomevents = eventArr2;
+  const events = eventArr;
+ 
   
 
   return (
@@ -114,18 +113,16 @@ const LandingPage = () => {
                 height={50}
               ></Image>
             </button>
-          </div>
+          </div >
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-4 bg-black text-white">
-        <div className="col-start-2 col-span-2 p-4 xl:text-[24px]">
-          Overview
-        </div>
-      </div>
-      <div className="grid grid-cols-5 gap-10  bg-black text-white" >
+     <div className="bg-black px-12 py-10">
+      <span className="text-xl text-white">Overview</span>
+     </div>
+      <div className="flex flex-wrap gap-10 justify-center bg-black text-white" >
       
-      {topevents.map((event:EventInterface,index:number) => 
-       <div key={index } className={`col-start-${(index + 2) % 3} col-span-1 p-4 justify-center`}>
+      {events.map((event:EventInterface,index:number) => 
+       <div key={index } className="p-4 justify-center w-[400px]">
         <Link href={event.linkTo}>
           <Image
             src={event.img}
@@ -137,35 +134,14 @@ const LandingPage = () => {
         <h1 className="mt-5 xl:text-[20px]">
           {event.title}
         </h1>
-        <p className="text-gray">{event.time}</p>
-        <p className="text-gray">{event.location}</p>
-        <p className="text-gray">{event.price} Baht</p>
+        <p className="text-stone-400">{event.time}</p>
+        <p className="text-stone-400">{event.location}</p>
+        <p className="text-stone-400">{event.price} Baht</p>
       </div>
       )}
       </div>
       
-      <div className="grid grid-cols-5 gap-10  bg-black text-white">
-        
-      {bottomevents.map((event:EventInterface,index:number) =>  
-      <div key={index} className={`col-start-${(index+2)%3} col-span-1 p-4 justify-center`}>
-        <Link href={event.linkTo}>
-          <Image
-            src={event.img}
-            alt="test pic"
-            width={330}
-            height={300}
-          ></Image>
-        </Link>
-        <h1 className="mt-5 xl:text-[20px]">
-          {event.title}
-        </h1>
-        <p className="text-gray">{event.time}</p>
-        <p className="text-gray">{event.location}</p>
-        <p className="text-gray">{event.price} Baht</p>
-      </div>
-      )}
-        
-      </div>
+      
       
     </div>
   );
