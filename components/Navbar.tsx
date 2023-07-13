@@ -113,8 +113,7 @@ const Navbar = () => {
       ) : null}
       </div>
       <div className="flex text-white items-center">
-      <LoginButton
-        />
+      <LoginButton/>
       </div>
       </div>
       </nav>

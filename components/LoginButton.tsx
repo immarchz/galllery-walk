@@ -1,18 +1,37 @@
-import Image from 'next/image'
 "use client"
+
+import {signIn, signOut, useSession} from "next-auth/react"
+
 const LoginButton = () => {
+
+  const {data: session } = useSession();
+
+  if(session && session.user) {
+    return (
+      <>
+      <p className='text-white'>{session.user.name}</p>
+      <button
+      disabled={false}
+      type={"button"}
+      className="text-white p-4"
+      onClick={()=>signOut()}
+      >
+        Sign out
+      </button>
+      </>
+      
+    )
+  }
   return (
-    <button
-    disabled={false}
-    type={"button"}
-    className={`login-btn`}
-    onClick={()=>{}}
+    <button 
+    onClick={()=>signIn()}
+    className='text-white'
     >
-      <span className={`flex-1 text-white`}>
-        Login
-      </span>
+      Sign In
     </button>
   )
-}
+  }
+  
+
 
 export default LoginButton
