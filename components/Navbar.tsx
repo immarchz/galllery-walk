@@ -38,9 +38,9 @@ const Navbar = () => {
         </div>
         <div className="flex text-white items-center">
           <Link
-          href="/"
+          href="/EventsList"
           >
-          Event
+          Events
           </Link>
         </div>
         </div>
