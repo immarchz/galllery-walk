@@ -1,5 +1,5 @@
 "use client"
-
+import Image from "next/image";
 import {signIn, signOut, useSession} from "next-auth/react"
 
 const LoginButton = () => {
@@ -8,17 +8,30 @@ const LoginButton = () => {
 
   if(session && session.user) {
     return (
-      <>
-      <p className='text-white'>{session.user.name}</p>
-      <button
+      <div className="flex flex-wrap justify-center gap-5">
+        <div className="flex flex-col pt-5 ">
+        <div className='flex text-white'>
+        {session.user.name}
+        </div>
+        <button
       disabled={false}
       type={"button"}
-      className="text-white p-4"
+      className="flex flex-row-reverse text-white "
       onClick={()=>signOut()}
       >
         Sign out
       </button>
-      </>
+        </div>
+       
+        <Image
+      src={session.user.image}
+      alt=""
+      width="100"
+      height="100"
+      className="flex rounded-full bg-white"
+      />
+        
+      </div>
       
     )
   }
