@@ -14,28 +14,19 @@ const eventArr:eventListInterface[]= [
   {
     linkTo : "/",
     img : "/bottomRight.svg",
-    description :"test test test test",
+    description :"",
     eventName: "World Food Event",
-    time : "10:00-11:00",
-    location :"Chiangmai", 
+    time : "",
+    location :"", 
   },
   {
     linkTo : "/",
-    img : "/bottomRight.svg",
-    description :"test test test test",
+    img : "/topMid.svg",
+    description :"",
     eventName: "Studio Ghibil",
-    time : "9:30 - 11:00",
-    location :"Chiangmai", 
+    time : "",
+    location :"", 
   },
-  {
-    linkTo : "/",
-    img : "/bottomRight.svg",
-    description :"test test test test",
-    eventName: "Studio Ghibil",
-    time : "9:30 - 11:00",
-    location :"Chiangmai", 
-  },  
-  
 ]
   
     
@@ -48,8 +39,8 @@ export default function EventsList() {
       
         {eventArr.map((event:eventListInterface,index:number)=>
         
-        <div key={index} className='flex flex-col-2 text-white mt-5'>
-          <div className="flex flex-wrap items-center ">
+        <div key={index} className='flex text-white mt-5'>
+          <div className="flex flex-col-3">
           <Link
         href={event.linkTo}>
           <Image
@@ -62,8 +53,6 @@ export default function EventsList() {
             <div className="flex flex-col ml-5">
             <h1 className="text-xl">{event.eventName}</h1>
             <p>{event.description}</p>
-            <p>{event.time}</p>
-            <p>{event.location}</p>
             </div>
           </div>
         
