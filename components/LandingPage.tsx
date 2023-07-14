@@ -17,7 +17,7 @@ interface MainEventInterface {
 
 const maineventsArr:MainEventInterface[] = [
   {
-    linkTo:"/",
+    linkTo:"/singleEvent",
     img:"/Eventpic.svg",
   },
 ]
@@ -93,7 +93,7 @@ const LandingPage = () => {
           </div>
           {showevents.map((event:MainEventInterface,index:number)=>
           <div key={index} className="flex text-white items-center">
-          <Link href="/">
+          <Link href={event.linkTo}>
             <Image
               src={event.img}
               alt="Event Pic"
