@@ -84,7 +84,7 @@ const Navbar = () => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    Test 1234
+                    Test 1234 <br></br> 
                     test 0000
                   </p>
                 </div>
