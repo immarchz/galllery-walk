@@ -116,8 +116,8 @@ const LandingPage = () => {
           </div >
         </div>
       </div>
-     <div className="bg-black px-12 py-10">
-      <span className="text-xl  text-white">Overview</span>
+     <div className="flex flex-row bg-black py-10 ">
+      <p className="text-xl text-white mx-32">Overview</p>
      </div>
       <div className="flex flex-wrap gap-10 justify-center bg-black text-white" >
       
