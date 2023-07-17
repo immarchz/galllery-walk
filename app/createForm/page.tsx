@@ -155,6 +155,7 @@ export default function createForm() {
               >
                 
                 <TextField
+                disabled
                   className="flex-grow"
                   defaultValue="No Files Uploaded"
                   InputProps={{
