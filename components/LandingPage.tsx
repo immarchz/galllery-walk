@@ -17,7 +17,7 @@ interface MainEventInterface {
 
 const maineventsArr:MainEventInterface[] = [
   {
-    linkTo:"/singleEvent",
+    linkTo:"/SingleEvent",
     img:"/Eventpic.svg",
   },
 ]
@@ -117,12 +117,12 @@ const LandingPage = () => {
         </div>
       </div>
      <div className="bg-black px-12 py-10">
-      <span className="text-xl text-white">Overview</span>
+      <span className="text-xl  text-white">Overview</span>
      </div>
       <div className="flex flex-wrap gap-10 justify-center bg-black text-white" >
       
       {events.map((event:EventInterface,index:number) => 
-       <div key={index } className="p-4 justify-center w-[400px]">
+       <div key={index } className="p-4 justify-center w-1/4">
         <Link href={event.linkTo}>
           <Image
             src={event.img}
