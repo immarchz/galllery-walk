@@ -40,7 +40,7 @@ export default function EventsList() {
           {eventInfo.map((event: eventInterface, index: number) => (
             <div
               key={index}
-              className="flex flex-col w-full items-center text-white "
+              className="flex flex-col w-full items-center text-white"
             >
               <div className="w-full flex justify-center">
                 <Image

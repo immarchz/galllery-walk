@@ -84,7 +84,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <div className="flex flex-col  my-auto items-center bgimg bg-cover bg-black text-white">
+      <div className="flex flex-col  my-auto items-center  bg-cover bg-black text-white">
         <div className="flex flex-row gap-8">
           <div className="flex text-white items-center">
             <button>
@@ -122,7 +122,7 @@ const LandingPage = () => {
       <div className="flex flex-wrap gap-10 justify-center bg-black text-white" >
       
       {events.map((event:EventInterface,index:number) => 
-       <div key={index } className="p-4 justify-center w-1/4">
+       <div key={index} className="p-4 justify-center w-1/4">
         <Link href={event.linkTo}>
           <Image
             src={event.img}
