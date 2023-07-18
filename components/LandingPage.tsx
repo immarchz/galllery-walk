@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
 interface EventInterface {
   linkTo: string;
   img: string;
@@ -20,6 +21,7 @@ const maineventsArr: MainEventInterface[] = [
     linkTo: "/SingleEvent",
     img: "/Eventpic.svg",
   },
+  
 ];
 
 const eventArr: EventInterface[] = [
@@ -73,6 +75,8 @@ const eventArr: EventInterface[] = [
   },
 ];
 
+
+
 const LandingPage = () => {
   const showevents = maineventsArr;
   const events = eventArr;
@@ -86,6 +90,7 @@ const LandingPage = () => {
               <Image src="/leftarrow.svg" alt="" width={50} height={50}></Image>
             </button>
           </div>
+          
           {showevents.map((event: MainEventInterface, index: number) => (
             <div key={index} className="flex text-white items-center">
               <Link href={event.linkTo}>
@@ -98,6 +103,8 @@ const LandingPage = () => {
               </Link>
             </div>
           ))}
+          
+          
 
           <div className="flex text-white items-center">
             <button>

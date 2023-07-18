@@ -141,7 +141,7 @@ export default function EventsList() {
               <MailIcon />
               <p className="flex flex-wrap pl-4">Contact</p>
             </div>
-            <div className="flex w-1/2">
+            <div className="flex w-1/2 pb-10">
               <p>{event.contact}</p>
             </div>
           </div>
