@@ -19,7 +19,7 @@ const Navbar = () => {
           <div className="flex text-white items-center">
             <Link href="/" className="flex justify-center items-center">
               <Image
-                src="/Logo2.svg"
+                src="/Logo.svg"
                 alt="Gallery Walk Logo"
                 width="150"
                 height="130"

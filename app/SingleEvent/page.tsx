@@ -79,12 +79,15 @@ export default function EventsList() {
               </div>
 
               <Stack className="py-10" direction="row" spacing={10}>
+                <Link href="ProjectList">
                 <Button
                   className="bg-white text-black hover:bg-white"
                   variant="contained"
                 >
                   Join as Guest
                 </Button>
+                </Link>
+                
 
                 <Link href="/createForm">
                   <Button
