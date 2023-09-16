@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { Divider,Button } from "antd";
+import { Divider, Button } from "antd";
 import * as React from "react";
 import { TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
@@ -125,7 +125,7 @@ export default function EventsList() {
             )}
           </div>
 
-          <Divider className="my-4 h-4  border-white" variant="middle" />
+          <Divider className="my-4 h-4  border-white" />
 
           <h1 className="text-xl">Incomming</h1>
           <div className="flex flex-col md:flex-row">

@@ -76,61 +76,60 @@ export default function SingleEvent() {
                   <Col offset={1}></Col>
                 </Row>
                 <Row justify="start" className="mt-5 mb-3"></Row>
+                <Divider className="my-4 h-4  border-white" />
               </Col>
             </Row>
           </div>
         ))}
-
-        <Divider className="my-4 h-4  border-white" />
       </div>
     );
   }
   return (
-    <div className="flex min-h-screen bg-cover bg-black text-white">
-      <div className="flex w-full justify-center px-10">
-        {projectInfo.map((event: projectInterface, index: number) => (
-          <div
-            key={index}
-            className="flex flex-col w-full items-center text-white "
-          >
-            <div className="w-full flex justify-center">
+    <div className="text-white ">
+      {projectInfo.map((event: projectInterface, index: number) => (
+        <div key={index} className="">
+          <Row gutter={[24, 24]} justify="center">
+            <Col>
               <Image
                 src={event.img}
                 alt="Event Pic"
                 width={1062}
                 height={316}
               />
-            </div>
-            <div className="flex flex-col w-1/2">
-              <h1 className="mt-5 xl:text-[20px]">{event.projectName}</h1>
-              <p className="text-ellipsis">{event.description}</p>
-            </div>
-            <div className="flex flex-row w-1/2 py-10">
-              <CalendarTodayIcon />
-              <p className="flex flex-wrap pl-4">Date & Time</p>
-            </div>
-            <div className="flex w-1/2">
-              <p>{event.time}</p>
-            </div>
-
-            <div className="flex flex-row w-1/2 py-10">
-              <StickyNote2Icon />
-              <p className="flex flex-wrap pl-4">About This Event</p>
-            </div>
-            <div className="flex w-1/2">
-              <p>{event.info}</p>
-            </div>
-
-            <div className="flex flex-row w-1/2 py-10">
-              <MailIcon />
-              <p className="flex flex-wrap pl-4">Contact</p>
-            </div>
-            <div className="flex w-1/2 pb-10">
-              <p>{event.contact}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+              <Row justify="start" className="mt-5 mb-3">
+                <Col className="xl:text-[20px]">Profile Color</Col>
+              </Row>
+              <Row justify="start" className="mt-5 mb-3">
+                <Col className="xl:text-[20px]">Project Name</Col>
+              </Row>
+              <Row>
+                <Col offset={1}>{event.projectName}</Col>
+              </Row>
+              <Row justify="start" className="mt-5 mb-3">
+                <Col className="xl:text-[20px]">Project Details</Col>
+              </Row>
+              <Row className="mt-5 mb-3">
+                <Col offset={1}>
+                  <span className="">{event.description}</span>
+                </Col>
+              </Row>
+              <Row justify="start" className="mt-5 mb-3">
+                <Col className="xl:text-[20px]">Presentation Files</Col>
+              </Row>
+              <Row>
+                <Col offset={1}></Col>
+              </Row>
+              <Row justify="start" className="mt-5 mb-3">
+                <Col className="xl:text-[20px]">Media</Col>
+              </Row>
+              <Row>
+                <Col offset={1}></Col>
+              </Row>
+              <Row justify="start" className="mt-5 mb-3"></Row>
+            </Col>
+          </Row>
+        </div>
+      ))}
     </div>
   );
 }
