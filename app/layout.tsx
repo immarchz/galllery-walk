@@ -15,12 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="relative">
+      <body className="relative bg-black">
         <ProvidersWrapper>
-        <Navbar />
-        {children}
+          <Navbar />
+          {children}
         </ProvidersWrapper>
-       
       </body>
     </html>
   );

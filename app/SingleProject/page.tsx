@@ -4,25 +4,25 @@ import Image from "next/image";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import MailIcon from "@mui/icons-material/Mail";
-import { Button } from "antd";
+import { Button, Col, Row, Divider } from "antd";
 import Stack from "@mui/material/Stack";
 import { useSession } from "next-auth/react";
 
-interface eventInterface {
+interface projectInterface {
   img: string;
   description: string;
-  eventName: string;
+  projectName: string;
   time: string;
   info: string;
   contact: string;
 }
 
-const eventArr: eventInterface[] = [
+const projectArr: projectInterface[] = [
   {
     img: "/singleImageTest.svg",
     description:
-      "ISEKAI คือ นิทรรศการเดี่ยวครั้งแรกของ Guong (กวง) - ณภพ เชาวนพูนผล บอกเล่าเกี่ยวกับ สาเหตุแห่งความนิยมมากล้น ที่มีต่อการ์ตูนแนวต่างโลก หรือ TEST TEST TESTTESTTESTTEST TEST TEST TESTTESTTESTTESTTEST TEST TESTTESTTESTTEST",
-    eventName: '"ISEKAI"',
+      "ISEKAI คือ นิทรรศการเดี่ยวครั้งแรกของ Guong (กวง) - ณภพ เชาวนพูนผล บอกเล่าเกี่ยวกับ สาเหตุแห่งความนิยมมากล้น ที่มีต่อการ์ตูนแนวต่าง",
+    projectName: '"ISEKAI"',
     time: "Monday, November 27 · 5:00 pm - 9:30 pm",
     info: "นิทรรศการจะถ่ายทอดแนวคิดทั้งหมดนี้ ผ่านสิ่งที่ character สุดน่ารักอย่าง Erite และ Cooley ได้พบเจอ ซึ่งหากสังเกตดี ๆ ผู้ชมจะพบสัญลักษณ์ประจำตัวของศิลปิน แทรกอยู่ในทุกผลงาน นั่นก็คือ ดวงตาที่มีลักษณะคล้าย “embryo” (ตัวอ่อนระยะแรกของสิ่งมีชีวิตหลายเซลล์) สื่อความหมายถึง สายตาอันไร้เดียงสา และความคิดที่เป็นอิสระของเหล่าเด็ก ๆ นั่นเอง",
     contact: "089-111-1111",
@@ -31,76 +31,64 @@ const eventArr: eventInterface[] = [
 
 export default function SingleEvent() {
   const { data: session } = useSession();
-  const eventInfo = eventArr;
+  const projectInfo = projectArr;
 
   if (session && session?.user) {
     return (
-      <div className="flex min-h-screen bg-cover bg-black text-white">
-        <div className="flex w-full justify-center px-10">
-          {eventInfo.map((event: eventInterface, index: number) => (
-            <div
-              key={index}
-              className="flex flex-col w-full items-center text-white"
-            >
-              <div className="w-full flex justify-center">
+      <div className="text-white ">
+        {projectInfo.map((event: projectInterface, index: number) => (
+          <div key={index} className="">
+            <Row gutter={[24, 24]} justify="center">
+              <Col>
                 <Image
                   src={event.img}
                   alt="Event Pic"
                   width={1062}
                   height={316}
                 />
-              </div>
-              <div className="flex flex-col w-1/2">
-                <h1 className="mt-5 xl:text-[20px]">{event.eventName}</h1>
-                <p className="text-ellipsis">{event.description}</p>
-              </div>
-              <div className="flex flex-row w-1/2 py-10">
-                <CalendarTodayIcon />
-                <p className="flex flex-wrap pl-4">Date & Time</p>
-              </div>
-              <div className="flex w-1/2">
-                <p>{event.time}</p>
-              </div>
+                <Row justify="start" className="mt-5 mb-3">
+                  <Col className="xl:text-[20px]">Profile Color</Col>
+                </Row>
+                <Row justify="start" className="mt-5 mb-3">
+                  <Col className="xl:text-[20px]">Project Name</Col>
+                </Row>
+                <Row>
+                  <Col offset={1}>{event.projectName}</Col>
+                </Row>
+                <Row justify="start" className="mt-5 mb-3">
+                  <Col className="xl:text-[20px]">Project Details</Col>
+                </Row>
+                <Row className="mt-5 mb-3">
+                  <Col offset={1}>
+                    <span className="">{event.description}</span>
+                  </Col>
+                </Row>
+                <Row justify="start" className="mt-5 mb-3">
+                  <Col className="xl:text-[20px]">Presentation Files</Col>
+                </Row>
+                <Row>
+                  <Col offset={1}></Col>
+                </Row>
+                <Row justify="start" className="mt-5 mb-3">
+                  <Col className="xl:text-[20px]">Media</Col>
+                </Row>
+                <Row>
+                  <Col offset={1}></Col>
+                </Row>
+                <Row justify="start" className="mt-5 mb-3"></Row>
+              </Col>
+            </Row>
+          </div>
+        ))}
 
-              <div className="flex flex-row w-1/2 py-10">
-                <StickyNote2Icon />
-                <p className="flex flex-wrap pl-4">About This Event</p>
-              </div>
-              <div className="flex w-1/2">
-                <p>{event.info}</p>
-              </div>
-
-              <div className="flex flex-row w-1/2 py-10">
-                <MailIcon />
-                <p className="flex flex-wrap pl-4">Contact</p>
-              </div>
-              <div className="flex w-1/2">
-                <p>{event.contact}</p>
-              </div>
-
-              <Stack className="py-10" direction="row" spacing={10}>
-                <Link href="ProjectList">
-                  <Button className="bg-white text-black hover:bg-white">
-                    Join as Guest
-                  </Button>
-                </Link>
-
-                <Link href="/createForm">
-                  <Button className="bg-white text-black hover:bg-white">
-                    Create project
-                  </Button>
-                </Link>
-              </Stack>
-            </div>
-          ))}
-        </div>
+        <Divider className="my-4 h-4  border-white" />
       </div>
     );
   }
   return (
     <div className="flex min-h-screen bg-cover bg-black text-white">
       <div className="flex w-full justify-center px-10">
-        {eventInfo.map((event: eventInterface, index: number) => (
+        {projectInfo.map((event: projectInterface, index: number) => (
           <div
             key={index}
             className="flex flex-col w-full items-center text-white "
@@ -114,7 +102,7 @@ export default function SingleEvent() {
               />
             </div>
             <div className="flex flex-col w-1/2">
-              <h1 className="mt-5 xl:text-[20px]">{event.eventName}</h1>
+              <h1 className="mt-5 xl:text-[20px]">{event.projectName}</h1>
               <p className="text-ellipsis">{event.description}</p>
             </div>
             <div className="flex flex-row w-1/2 py-10">
