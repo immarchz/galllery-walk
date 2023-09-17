@@ -7,6 +7,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import { Button, Col, Row, Divider } from "antd";
 import Stack from "@mui/material/Stack";
 import { useSession } from "next-auth/react";
+import Comment from "@/components/Comment";
 
 interface projectInterface {
   img: string;
@@ -15,6 +16,11 @@ interface projectInterface {
   time: string;
   info: string;
   contact: string;
+}
+
+interface Comment {
+  id: string;
+  body: string;
 }
 
 const projectArr: projectInterface[] = [
@@ -75,8 +81,13 @@ export default function SingleEvent() {
                 <Row>
                   <Col offset={1}></Col>
                 </Row>
-                <Row justify="start" className="mt-5 mb-3"></Row>
-                <Divider className="my-4 h-4  border-white" />
+
+                <Divider className=" h-4  border-white" />
+                <Row justify="start" className="mt-5 mb-10">
+                  <Col>
+                    <Comment />
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </div>
