@@ -21,8 +21,8 @@ const Navbar = () => {
               <Image
                 src="/Logo.svg"
                 alt="Gallery Walk Logo"
-                width="118"
-                height="100"
+                width="150"
+                height="130"
                 className="object-contain"
               />
             </Link>

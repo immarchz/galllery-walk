@@ -4,7 +4,7 @@ import Image from "next/image";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import MailIcon from "@mui/icons-material/Mail";
-import Button from "@mui/material/Button";
+import { Button } from "antd";
 import Stack from "@mui/material/Stack";
 import { useSession } from "next-auth/react";
 
@@ -29,7 +29,7 @@ const eventArr: eventInterface[] = [
   },
 ];
 
-export default function EventsList() {
+export default function SingleEvent() {
   const { data: session } = useSession();
   const eventInfo = eventArr;
 
@@ -79,18 +79,14 @@ export default function EventsList() {
               </div>
 
               <Stack className="py-10" direction="row" spacing={10}>
-                <Button
-                  className="bg-white text-black hover:bg-white"
-                  variant="contained"
-                >
-                  Join as Guest
-                </Button>
+                <Link href="ProjectList">
+                  <Button className="bg-white text-black hover:bg-white">
+                    Join as Guest
+                  </Button>
+                </Link>
 
                 <Link href="/createForm">
-                  <Button
-                    className="bg-white text-black hover:bg-white"
-                    variant="contained"
-                  >
+                  <Button className="bg-white text-black hover:bg-white">
                     Create project
                   </Button>
                 </Link>
@@ -141,7 +137,7 @@ export default function EventsList() {
               <MailIcon />
               <p className="flex flex-wrap pl-4">Contact</p>
             </div>
-            <div className="flex w-1/2">
+            <div className="flex w-1/2 pb-10">
               <p>{event.contact}</p>
             </div>
           </div>

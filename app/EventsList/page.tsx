@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Divider from "@mui/material/Divider";
+import { Divider, Button } from "antd";
 import * as React from "react";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
@@ -124,7 +125,7 @@ export default function EventsList() {
             )}
           </div>
 
-          <Divider className="my-4 h-4  border-white" variant="middle" />
+          <Divider className="my-4 h-4  border-white" />
 
           <h1 className="text-xl">Incomming</h1>
           <div className="flex flex-col md:flex-row">
@@ -172,9 +173,6 @@ export default function EventsList() {
           <div className="flex w-full justify-center my-10">
             <Button
               className="my-12 text-black bg-white w-32 hover:bg-white"
-              sx={{
-                borderRadius: 3,
-              }}
               onClick={handleOpen}
             >
               Create Event
