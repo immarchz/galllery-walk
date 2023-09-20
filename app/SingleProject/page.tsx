@@ -1,13 +1,10 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import StickyNote2Icon from "@mui/icons-material/StickyNote2";
-import MailIcon from "@mui/icons-material/Mail";
 import { Button, Col, Row, Divider } from "antd";
-import Stack from "@mui/material/Stack";
 import { useSession } from "next-auth/react";
 import Comment from "@/components/Comment";
+import { ContainerOutlined } from "@ant-design/icons";
 
 interface projectInterface {
   img: string;
@@ -18,14 +15,9 @@ interface projectInterface {
   contact: string;
 }
 
-interface Comment {
-  id: string;
-  body: string;
-}
-
 const projectArr: projectInterface[] = [
   {
-    img: "/singleImageTest.svg",
+    img: "/Media2.svg",
     description:
       "ISEKAI คือ นิทรรศการเดี่ยวครั้งแรกของ Guong (กวง) - ณภพ เชาวนพูนผล บอกเล่าเกี่ยวกับ สาเหตุแห่งความนิยมมากล้น ที่มีต่อการ์ตูนแนวต่าง",
     projectName: '"ISEKAI"',
@@ -49,37 +41,14 @@ export default function SingleEvent() {
                 <Image
                   src={event.img}
                   alt="Event Pic"
-                  width={1062}
+                  width={562}
                   height={316}
                 />
                 <Row justify="start" className="mt-5 mb-3">
-                  <Col className="xl:text-[20px]">Profile Color</Col>
+                  <Col className="xl:text-[20px]">{event.projectName}</Col>
                 </Row>
                 <Row justify="start" className="mt-5 mb-3">
-                  <Col className="xl:text-[20px]">Project Name</Col>
-                </Row>
-                <Row>
-                  <Col offset={1}>{event.projectName}</Col>
-                </Row>
-                <Row justify="start" className="mt-5 mb-3">
-                  <Col className="xl:text-[20px]">Project Details</Col>
-                </Row>
-                <Row className="mt-5 mb-3">
-                  <Col offset={1}>
-                    <span className="">{event.description}</span>
-                  </Col>
-                </Row>
-                <Row justify="start" className="mt-5 mb-3">
-                  <Col className="xl:text-[20px]">Presentation Files</Col>
-                </Row>
-                <Row>
-                  <Col offset={1}></Col>
-                </Row>
-                <Row justify="start" className="mt-5 mb-3">
-                  <Col className="xl:text-[20px]">Media</Col>
-                </Row>
-                <Row>
-                  <Col offset={1}></Col>
+                  <ContainerOutlined />
                 </Row>
 
                 <Divider className=" h-4  border-white" />
