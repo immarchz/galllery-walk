@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button, Col, Row, Divider } from "antd";
 import { useSession } from "next-auth/react";
 import Comment from "@/components/Comment";
-import { ContainerOutlined } from "@ant-design/icons";
+import { ContainerOutlined, FileOutlined } from "@ant-design/icons";
 
 interface projectInterface {
   img: string;
@@ -33,7 +33,7 @@ export default function SingleEvent() {
 
   if (session && session?.user) {
     return (
-      <div className="text-white ">
+      <div className="text-white mx-10">
         {projectInfo.map((event: projectInterface, index: number) => (
           <div key={index} className="">
             <Row gutter={[24, 24]} justify="center">
@@ -45,14 +45,35 @@ export default function SingleEvent() {
                   height={316}
                 />
                 <Row justify="start" className="mt-5 mb-3">
-                  <Col className="xl:text-[20px]">{event.projectName}</Col>
+                  <Col className="2xl:text-[20px]">{event.projectName}</Col>
                 </Row>
-                <Row justify="start" className="mt-5 mb-3">
-                  <ContainerOutlined />
+                <Row justify="start" className="mt-5 mb-3 ">
+                  <Col className="mr-3 mt-1 flex items-start">
+                    <ContainerOutlined />
+                  </Col>
+                  <Col className="mr-10  text-center"> About This Project</Col>
+                  <Col
+                    className="text-left text-ellipsis"
+                    style={{ width: 720 }}
+                  >
+                    {event.description}
+                  </Col>
+                </Row>
+                <Row justify="start" className="mt-5 mb-3 ">
+                  <Col className="mr-3 mt-1 flex items-start ">
+                    <FileOutlined />
+                  </Col>
+                  <Col className="mr-28 text-center">Media</Col>
+                  <Col
+                    className="text-left text-ellipsis"
+                    style={{ width: 720 }}
+                  >
+                    {event.info}
+                  </Col>
                 </Row>
 
-                <Divider className=" h-4  border-white" />
-                <Row justify="start" className="mt-5 mb-10">
+                <Divider className="  border-white" />
+                <Row justify="start" className="mt-5 ">
                   <Col>
                     <Comment />
                   </Col>
