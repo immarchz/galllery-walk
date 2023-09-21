@@ -66,14 +66,14 @@ model Event {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   title String 
   description String
-  eventStart DateTime @map("event_start")
-  eventEnd DateTime @map("event_end")
+  event_start DateTime 
+  event_end DateTime 
   organizer String 
-  moeny Int 
-  hostId       String   @map("host_id") @db.ObjectId 
-  user User @relation(fields: [hostId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  lastParticipant String @map("last_participant")
-  participants String[] @db.ObjectId
+  money Int 
+  host_id       String   @map("host_id") @db.ObjectId 
+  user User @relation(fields: [host_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  last_participant String? 
+  participants String[] @db.ObjectId @default([])
   projects Project[]
 
   @@map("events")
