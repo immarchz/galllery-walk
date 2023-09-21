@@ -4,6 +4,22 @@ import { User } from "@prisma/client";
 import { toast } from "react-toastify";
 import InputImage from "./InputImage";
 import { uploadImage } from "@/utils/upload_image";
+import {
+  Button,
+  Card,
+  Col,
+  DatePicker,
+  Divider,
+  Form,
+  Input,
+  Row,
+  Select,
+  TimePicker,
+  Upload,
+} from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { PlusOutlined } from "@ant-design/icons";
+import Image from "next/image";
 
 export default function EventForm({
   user,
@@ -77,61 +93,340 @@ export default function EventForm({
     // await res.json();
   };
 
+  const [form] = Form.useForm();
+
+  const config = {
+    rules: [
+      {
+        type: "object" as const,
+        required: true,
+        message: "Please select time!",
+      },
+    ],
+  };
+
   return (
-    <form
-      style={{ background: "tomato" }}
-      onSubmit={create ? createEvent : updateEvent}
-    >
-      <label htmlFor="title">title</label>
-      <input
-        type="text"
-        name="title"
-        defaultValue={event?.title ?? ""}
-        required
-      />
-      <label htmlFor="description">description</label>
+    // <form
+    //   style={{ background: "tomato" }}
+    //   onSubmit={create ? createEvent : updateEvent}
+    // >
+    //   <label htmlFor="title">title</label>
+    //   <input
+    //     type="text"
+    //     name="title"
+    //     defaultValue={event?.title ?? ""}
+    //     required
+    //   />
+    //   <label htmlFor="description">description</label>
 
-      <input
-        type="text"
-        name="description"
-        defaultValue={event?.description ?? ""}
-        required
-      />
-      <label htmlFor="event_start">event_start</label>
+    //   <input
+    //     type="text"
+    //     name="description"
+    //     defaultValue={event?.description ?? ""}
+    //     required
+    //   />
+    //   <label htmlFor="event_start">event_start</label>
 
-      <input
-        type="datetime-local"
-        name="event_start"
-        defaultValue={event?.event_start ?? ""}
-        required
-      />
-      <label htmlFor="event_end">event_end</label>
+    //   <input
+    //     type="datetime-local"
+    //     name="event_start"
+    //     defaultValue={event?.event_start ?? ""}
+    //     required
+    //   />
+    //   <label htmlFor="event_end">event_end</label>
 
-      <input
-        type="datetime-local"
-        name="event_end"
-        defaultValue={event?.event_end ?? ""}
-        required
-      />
-      <label htmlFor="organizer">organizer</label>
+    //   <input
+    //     type="datetime-local"
+    //     name="event_end"
+    //     defaultValue={event?.event_end ?? ""}
+    //     required
+    //   />
+    //   <label htmlFor="organizer">organizer</label>
 
-      <input
-        type="text"
-        name="organizer"
-        defaultValue={event?.organizer ?? ""}
-        required
-      />
-      <label htmlFor="money">money</label>
+    //   <input
+    //     type="text"
+    //     name="organizer"
+    //     defaultValue={event?.organizer ?? ""}
+    //     required
+    //   />
+    //   <label htmlFor="money">money</label>
 
-      <input
-        type="text"
-        name="money"
-        defaultValue={event?.money ?? ""}
-        pattern="[0-9]{1,5}"
-        required
-      />
-      <InputImage name="image" required />
-      <button type="submit">createEvent</button>
-    </form>
+    //   <input
+    //     type="text"
+    //     name="money"
+    //     defaultValue={event?.money ?? ""}
+    //     pattern="[0-9]{1,5}"
+    //     required
+    //   />
+    //   <InputImage name="image" required />
+    //   <button type="submit">createEvent</button>
+    // </form>
+    <div className="mx-10">
+      <Form form={form} autoComplete="off">
+        <Row justify={"center"} gutter={[24, 24]} className="">
+          <Col xs={24} xl={8}>
+            <Card
+              className="text-white"
+              style={{
+                width: "100%",
+                height: 1051,
+                backgroundColor: "#1E1E1E",
+                border: "none",
+              }}
+            >
+              <Row justify={"start"}>
+                <Col xs={24} xl={24}>
+                  <div className="mx-8 my-5 ">
+                    <Row className="my-4" justify={"start"}>
+                      <Col span={12}>Title</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item
+                          name="title"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please input your Project Title!",
+                            },
+                          ]}
+                        >
+                          <Input
+                            style={{
+                              width: "100%",
+                              height: 32,
+                              backgroundColor: "#1E1E1E",
+                              borderRadius: "6px",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Description</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item
+                          name="description"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please input your Project Description!",
+                            },
+                          ]}
+                        >
+                          <TextArea
+                            style={{
+                              width: "100%",
+                              height: 106,
+                              backgroundColor: "#1E1E1E",
+                              borderRadius: "6px",
+                              verticalAlign: "top",
+                              textAlign: "left",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    <Row className="" justify={"start"}>
+                      <Col span={11}>
+                        <Row className="mb-3">Event Start</Row>
+                        <Form.Item name="event_start" {...config}>
+                          <Row>
+                            <DatePicker style={{ width: "100%" }} />
+                          </Row>
+                        </Form.Item>
+                      </Col>
+                      <Col span={2}></Col>
+                      <Col span={11}>
+                        <Row className="mb-3">Event End</Row>
+                        <Form.Item name="event_end" {...config}>
+                          <Row>
+                            <DatePicker style={{ width: "100%" }} />
+                          </Row>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+
+                    <Row className="mb-2" justify={"start"}>
+                      <Col span={11}>
+                        <Row className="mb-3">Start time</Row>
+                        <Form.Item name="event_start" {...config}>
+                          <Row>
+                            <TimePicker style={{ width: "100%" }} />
+                          </Row>
+                        </Form.Item>
+                      </Col>
+                      <Col span={2}></Col>
+                      <Col span={11}>
+                        <Row className="mb-3">End time</Row>
+                        <Form.Item name="event_end" {...config}>
+                          <Row>
+                            <TimePicker style={{ width: "100%" }} />
+                          </Row>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Upload Photo</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item name="image">
+                          <Upload>
+                            <Image
+                              src="/Upload.svg"
+                              alt=""
+                              width={0}
+                              height={0}
+                              sizes="100vw"
+                              style={{ width: "100%", height: "100%" }}
+                            />
+                          </Upload>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+          <Col xs={24} xl={8}>
+            <Card
+              className="text-white "
+              style={{
+                width: "100%",
+                height: 1051,
+                backgroundColor: "#1E1E1E",
+                border: "none",
+              }}
+            >
+              <Row justify={"start"}>
+                <Col xs={24} xl={24}>
+                  <div className="mx-8 my-5 ">
+                    <Row className="my-4" justify={"start"}>
+                      <Col span={12}>Organizer</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item name="organizer">
+                          <Input
+                            style={{
+                              width: "100%",
+                              height: 30,
+                              backgroundColor: "#1E1E1E",
+                              borderRadius: "6px",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Members</Col>
+                    </Row>
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Invitation Code</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={20}>
+                        <Form.Item name="link">
+                          <Input
+                            addonAfter={
+                              <Button
+                                type="primary"
+                                style={{ backgroundColor: "#1E1E1E" }}
+                              >
+                                Copy
+                              </Button>
+                            }
+                            style={{
+                              width: "100%",
+                              height: 30,
+                              backgroundColor: "#1E1E1E",
+
+                              borderRadius: "6px",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                      {/* <Col span={4}>
+                      <Button
+                        style={{
+                          color: "white",
+                          width: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <SyncOutlined />
+                      </Button>
+                    </Col> */}
+                    </Row>
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Members</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item name="attach">
+                          <Input
+                            placeholder="Filter by name"
+                            style={{
+                              width: "100%",
+                              height: 32,
+                              backgroundColor: "#1E1E1E",
+                              borderRadius: "6px",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <Col span={2} className="flex items-center">
+                        <Image
+                          src=""
+                          alt=""
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          style={{ width: "100%", height: "auto" }}
+                          className="flex rounded-full "
+                        />
+                      </Col>
+                      <Col span={1}></Col>
+                      <Col span={14} className="flex items-center"></Col>
+                      <Col span={6} className="flex items-center">
+                        <Select
+                          style={{
+                            width: "100%",
+                            color: "black",
+                          }}
+                        />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Divider style={{ borderColor: "white" }} />
+                    </Row>
+
+                    <Row justify={"center"}>
+                      <Form.Item>
+                        <Button
+                          style={{ backgroundColor: "white", color:" black" }}
+                          type="primary"
+                        >
+                          Submit
+                        </Button>
+                      </Form.Item>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+        </Row>
+      </Form>
+    </div>
   );
 }

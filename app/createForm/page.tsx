@@ -121,12 +121,14 @@ export default function createForm() {
                       <Row gutter={[24, 24]}>
                         <Col span={24}>
                           <Form.Item<FieldType> name="photo">
-                            <Upload listType="picture-card">
-                              <PlusOutlined
-                                style={{
-                                  width: "100%",
-                                  color: "white",
-                                }}
+                            <Upload>
+                              <Image
+                                src="/Upload.svg"
+                                alt=""
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{ width: "100%", height: "100%" }}
                               />
                             </Upload>
                           </Form.Item>
