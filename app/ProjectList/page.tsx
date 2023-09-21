@@ -70,8 +70,10 @@ export default function ProjectList() {
                 <Image
                   src={event.img}
                   alt="Event Pic"
-                  width={1250}
-                  height={316}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "100%" }}
                 />
               </Row>
 
@@ -84,7 +86,7 @@ export default function ProjectList() {
                   grid={{
                     gutter: 24,
                     xs: 1,
-                    sm: 2,
+                    sm: 1,
                     md: 2,
                     lg: 2,
                     xl: 3,

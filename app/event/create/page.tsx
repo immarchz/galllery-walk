@@ -1,7 +1,9 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import EventForm from "@/components/EventForm";
 import { prisma } from "@/lib/prisma";
+
 import { getServerSession } from "next-auth";
+
 import { redirect } from "next/navigation";
 import React from "react";
 import { ToastContainer } from "react-toastify";
