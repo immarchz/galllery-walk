@@ -64,6 +64,7 @@ model VerificationToken {
 
 model Event {
   id String @id @default(auto()) @map("_id") @db.ObjectId
+  display_image String
   title String 
   description String
   event_start DateTime 
