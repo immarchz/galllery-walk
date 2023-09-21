@@ -263,9 +263,11 @@ export default function EventsList() {
               )
             )}
           </Row>
-        </Row>
-        <Row justify={"center"} className="my-16">
-          <Button className=" bg-white">Create Event</Button>
+          <Row justify={"center"} className="my-16">
+            <Link href="/">
+              <Button className=" bg-white">Create Event</Button>
+            </Link>
+          </Row>
         </Row>
       </div>
     );
