@@ -109,16 +109,18 @@ const LandingPage = () => {
         </Col>
         <Row gutter={[24, 24]} justify="center" className="text-white my-10 ">
           {events.map((event: EventInterface, index: number) => (
-            <Col key={index} style={{ alignItems: "center" }}>
-              <Link href={event.linkTo}>
-                <Image
-                  src={event.img}
-                  alt="Event Pic"
-                  width={400}
-                  height={400}
-                />
-              </Link>
-              <h1 className="mt-5 xl:text-[20px]">{event.title}</h1>
+            <Col key={index}>
+              <Row justify={"center"}>
+                <Link href={event.linkTo}>
+                  <Image
+                    src={event.img}
+                    alt="Event Pic"
+                    width={500}
+                    height={400}
+                  />
+                </Link>
+              </Row>
+              <p className="mt-5 xl:text-[20px]">{event.title}</p>
               <p className="text-stone-400">{event.time}</p>
               <p className="text-stone-400">{event.location}</p>
               <p className="text-stone-400">{event.price} Baht</p>
