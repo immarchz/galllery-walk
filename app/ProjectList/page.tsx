@@ -66,52 +66,62 @@ export default function ProjectList() {
               <Row justify="start" className="mt-5 mb-3">
                 <Col className="xl:text-[20px]">{event.name}</Col>
               </Row>
-              <Image
-                src={event.img}
-                alt="Event Pic"
-                width={1140}
-                height={316}
-              />
+              <Row justify={"center"}>
+                <Image
+                  src={event.img}
+                  alt="Event Pic"
+                  width={1250}
+                  height={316}
+                />
+              </Row>
+
               <Row justify={"start"} className="mt-5 mb-3">
                 <Col className="xl:text-[20px]">Projects</Col>
               </Row>
-              <List
-                grid={{
-                  gutter: 16,
-                  column: 3,
-                  xs: 1,
-                  sm: 2,
-                  md: 4,
-                  lg: 4,
-                  xl: 6,
-                  xxl: 3,
-                }}
-                dataSource={projectinfo}
-                renderItem={(item) => (
-                  <List.Item>
-                    <Link href={item.linkto}>
-                      <Card
-                        hoverable
-                        title={
-                          <Meta title={item.projectName} className="my-1" />
-                        }
-                        style={{ width: 300 }}
-                        cover={
-                          <Image
-                            alt=""
-                            src={item.img}
-                            width={300}
-                            height={300}
-                          />
-                        }
-                        extra={<a></a>}
-                      >
-                        {item.desc}
-                      </Card>
-                    </Link>
-                  </List.Item>
-                )}
-              />
+              <Row justify={"center"}>
+                <List
+                  className=""
+                  grid={{
+                    gutter: 24,
+                    xs: 1,
+                    sm: 2,
+                    md: 2,
+                    lg: 2,
+                    xl: 3,
+                    xxl: 3,
+                  }}
+                  dataSource={projectinfo}
+                  renderItem={(item) => (
+                    <List.Item
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        padding: "10px",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Link href={item.linkto}>
+                        <Card
+                          title={
+                            <Meta title={item.projectName} className="my-1" />
+                          }
+                          style={{ width: 300 }}
+                          cover={
+                            <Image
+                              alt=""
+                              src={item.img}
+                              width={280}
+                              height={280}
+                            />
+                          }
+                        >
+                          {item.desc}
+                        </Card>
+                      </Link>
+                    </List.Item>
+                  )}
+                />
+              </Row>
             </Col>
           </Row>
         </div>
