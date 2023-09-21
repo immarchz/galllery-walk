@@ -1,18 +1,20 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCCpuDcqdAJU5iR-T9Wwk5fYDMHRUIRY_U",
-  authDomain: "gallery-walk-b3312.firebaseapp.com",
-  projectId: "gallery-walk-b3312",
-  storageBucket: "gallery-walk-b3312.appspot.com",
-  messagingSenderId: "212046405718",
-  appId: "1:212046405718:web:816da28c19950ae98e9bf7",
+  apiKey: "AIzaSyAcehZ1CuluOySPGLl6LOm-HP6gIvSlDKE",
+  authDomain: "gallery-walk-5a404.firebaseapp.com",
+  projectId: "gallery-walk-5a404",
+  storageBucket: "gallery-walk-5a404.appspot.com",
+  messagingSenderId: "904558761214",
+  appId: "1:904558761214:web:8322dbe455935b6f4301af",
 };
 
 const app = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
+const storage = getStorage(app);
 
-export { auth, googleProvider };
+export { auth, storage, ref, uploadBytes, getDownloadURL, googleProvider };
