@@ -99,6 +99,24 @@ const eventArr3: completeEventListInterface[] = [
     time: "Sat, Jan 16, 8:00 PM",
     location: "Charan Panonta",
   },
+  {
+    linkTo: "/SingleEvent",
+    img: "/whitelephant.svg",
+
+    eventName:
+      'The 12th White Elephant Art Fair under the theme "Love the World"',
+    time: "Sat, Jan 16, 8:00 PM",
+    location: "Charan Panonta",
+  },
+  {
+    linkTo: "/SingleEvent",
+    img: "/whitelephant.svg",
+
+    eventName:
+      'The 12th White Elephant Art Fair under the theme "Love the World"',
+    time: "Sat, Jan 16, 8:00 PM",
+    location: "Charan Panonta",
+  },
 ];
 
 export default function EventsList() {
