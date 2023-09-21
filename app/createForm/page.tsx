@@ -255,19 +255,22 @@ export default function createForm() {
                       {members.map((event: membersInterface, index: number) => (
                         <>
                           <Row key={index}>
-                            <Col span={2}>
+                            <Col span={2} className="flex items-center">
                               <Image
                                 src={`${session.user.image}`}
                                 alt=""
-                                width="150"
-                                height="150"
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{ width: "100%", height: "auto" }}
                                 className="flex rounded-full "
                               />
                             </Col>
-                            <Col span={15} className="flex items-center ml-3">
+                            <Col span={1}></Col>
+                            <Col span={14} className="flex items-center">
                               {event.name}
                             </Col>
-                            <Col span={6}>
+                            <Col span={6} className="flex items-center">
                               <Select
                                 style={{
                                   width: "100%",
@@ -282,7 +285,7 @@ export default function createForm() {
                         </>
                       ))}
                       <Row justify={"center"}>
-                        <Button>Save</Button>
+                        <Button style={{ color: "white" }}>Save</Button>
                       </Row>
                     </div>
                   </Col>
