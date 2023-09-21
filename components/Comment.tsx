@@ -1,5 +1,6 @@
+"use client"
 import React, { useState } from "react";
-import { Input, Form, Row, Col } from "antd";
+import { Input, Form, Row, Col, Card, Button } from "antd";
 
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -31,24 +32,34 @@ const Comment = () => {
     return (
       <>
         <Form className="text-white">
-          <Row className="my-10">
+          <Row className="my-10 flex flex-wrap" gutter={[24, 24]}>
             <Col>
               <Image
                 src={`${session.user.image}`}
                 alt=""
                 width="100"
                 height="100"
-                className="flex rounded-full bg-whit mr-5"
+                className="flex rounded-full mr-5"
               />
             </Col>
             <Col>
-              <TextArea style={{ width: 940 }} rows={4} />
+              <TextArea style={{ height: 170, width: 500 }} />
+            </Col>
+            <Col>
+              <Card title="Donate" style={{ height: 170, width: 200 }}>
+                <Row>
+                  <Input className="mb-2"></Input>
+                </Row>
+                <Row justify={"center"}>
+                  <Button>Donate</Button>
+                </Row>
+              </Card>
             </Col>
           </Row>
 
           {comments.map((event: Comment, index: number) => (
             <div key={index}>
-              <Row>
+              <Row gutter={[24, 24]}>
                 <Col>
                   <Image
                     src={event.pic}
