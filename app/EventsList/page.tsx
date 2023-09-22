@@ -138,7 +138,7 @@ export default function EventsList() {
               (event: currentEventListInterface, index: number) => (
                 <>
                   <Col span={12}>
-                    <Row>
+                    <Row style={{ width: "50" }}>
                       <Col>
                         <Link href={event.linkTo}>
                           <Image
@@ -264,7 +264,7 @@ export default function EventsList() {
             )}
           </Row>
           <Row justify={"center"} className="my-16">
-            <Link href="/">
+            <Link href="/event/create">
               <Button className=" bg-white">Create Event</Button>
             </Link>
           </Row>
