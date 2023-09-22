@@ -9,11 +9,13 @@ import {
   Row,
   Select,
   Upload,
+  UploadProps,
+  message,
 } from "antd";
 import React from "react";
+import { InboxOutlined } from '@ant-design/icons';
 import Image from "next/image";
 import Link from "next/link";
-import { PlusOutlined, SearchOutlined, SyncOutlined } from "@ant-design/icons";
 import { useSession } from "next-auth/react";
 
 const { TextArea } = Input;
@@ -38,6 +40,28 @@ type FieldType = {
   org?: string;
   members?: string;
   link?: string;
+};
+
+const { Dragger } = Upload;
+
+const props: UploadProps = {
+  name: "file",
+  multiple: true,
+  action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+  onChange(info) {
+    const { status } = info.file;
+    if (status !== "uploading") {
+      console.log(info.file, info.fileList);
+    }
+    if (status === "done") {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === "error") {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+  onDrop(e) {
+    console.log("Dropped files", e.dataTransfer.files);
+  },
 };
 
 export default function createForm() {
@@ -121,16 +145,19 @@ export default function createForm() {
                       <Row gutter={[24, 24]}>
                         <Col span={24}>
                           <Form.Item<FieldType> name="photo">
-                            <Upload>
-                              <Image
-                                src="/Upload.svg"
-                                alt=""
-                                width={0}
-                                height={0}
-                                sizes="100vw"
-                                style={{ width: "100%", height: "100%" }}
-                              />
-                            </Upload>
+                            <Dragger {...props}>
+                              <p className="ant-upload-drag-icon">
+                                <InboxOutlined />
+                              </p>
+                              <p className="text-white">
+                                Click or drag file to this area to upload
+                              </p>
+                              <p className="text-white">
+                                Support for a single or bulk upload. Strictly
+                                prohibited from uploading company data or other
+                                banned files.
+                              </p>
+                            </Dragger>
                           </Form.Item>
                         </Col>
                       </Row>
