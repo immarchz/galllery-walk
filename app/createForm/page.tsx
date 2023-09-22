@@ -13,7 +13,7 @@ import {
   message,
 } from "antd";
 import React from "react";
-import { InboxOutlined } from '@ant-design/icons';
+import { InboxOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -26,6 +26,14 @@ interface membersInterface {
 }
 
 const membersArr: membersInterface[] = [
+  {
+    pic: "",
+    name: "Test",
+  },
+  {
+    pic: "",
+    name: "Test",
+  },
   {
     pic: "",
     name: "Test",
@@ -301,10 +309,16 @@ export default function createForm() {
                             </Col>
                             <Col span={6} className="flex items-center">
                               <Select
+                              defaultValue="admin"
                                 style={{
                                   width: "100%",
                                   color: "black",
                                 }}
+                                options={[
+                                  { value: "admin", label: "Admin" },
+                                  { value: "owner", label: "Owner" },
+                                  { value: "member", label: "Member" },
+                                ]}
                               />
                             </Col>
                           </Row>
