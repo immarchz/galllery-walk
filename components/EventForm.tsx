@@ -431,6 +431,11 @@ export default function EventForm({
                             width: "100%",
                             color: "black",
                           }}
+                          options={[
+                            { value: "admin", label: "Admin" },
+                            { value: "owner", label: "Owner" },
+                            { value: "member", label: "Member" },
+                          ]}
                         />
                       </Col>
                     </Row>
