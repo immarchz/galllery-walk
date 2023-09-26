@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { Input, Form, Row, Col, Card, Button } from "antd";
 
@@ -39,7 +39,7 @@ const Comment = () => {
                 alt=""
                 width="100"
                 height="100"
-                className="flex rounded-full mr-5"
+                className="flex rounded-full "
               />
             </Col>
             <Col>
@@ -60,13 +60,13 @@ const Comment = () => {
           {comments.map((event: Comment, index: number) => (
             <div key={index}>
               <Row gutter={[24, 24]}>
-                <Col>
+                <Col className="">
                   <Image
-                    src={event.pic}
+                    src={`${session.user.image}`}
                     alt=""
                     width="80"
                     height="80"
-                    className="flex rounded-full bg-whit mr-5"
+                    className="flex rounded-full bg-whit "
                   />
                 </Col>
                 <Col>
