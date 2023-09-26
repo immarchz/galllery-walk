@@ -1,4 +1,5 @@
 "use client";
+import { Button, Col, Row } from "antd";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
@@ -24,8 +25,41 @@ export default function LoginButton() {
 
   if (session && session.user) {
     return (
-      <div className="flex flex-wrap justify-center gap-5">
-        <div className="flex flex-col pt-5 ">
+      <div className="">
+        <Row justify={"end"} gutter={[8, 8]}>
+          <Col className="mt-3" span={15}>
+            <Row justify={"end"}>
+              <Col
+                className="text-white "
+                style={{ textAlign: "right", wordWrap: "break-word" }}
+              >
+                {session.user.name}
+              </Col>
+            </Row>
+            <Row justify={"end"}>
+              <Col>
+                <button
+                  disabled={false}
+                  type={"button"}
+                  className="flex flex-row-reverse mt-1 text-white "
+                  onClick={() => signOut()}
+                >
+                  Sign out
+                </button>
+              </Col>
+            </Row>
+          </Col>
+          <Col span={9}>
+            <Image
+              src={`${session.user.image}`}
+              alt=""
+              width="100"
+              height="100"
+              className="flex rounded-full bg-white"
+            />
+          </Col>
+        </Row>
+        {/* <div className="flex flex-col pt-5 ">
           <div className="flex text-white">{session.user.name}</div>
           <button
             disabled={false}
@@ -43,7 +77,7 @@ export default function LoginButton() {
           width="100"
           height="100"
           className="flex rounded-full bg-white"
-        />
+        /> */}
       </div>
     );
   }

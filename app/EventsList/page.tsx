@@ -138,7 +138,7 @@ export default function EventsList() {
               (event: currentEventListInterface, index: number) => (
                 <>
                   <Col span={12}>
-                    <Row style={{ width: "50" }}>
+                    <Row style={{ width: "50" }} justify={"center"}>
                       <Col>
                         <Link href={event.linkTo}>
                           <Image
@@ -185,7 +185,7 @@ export default function EventsList() {
               (event: incommingEventListInterface, index: number) => (
                 <>
                   <Col span={12}>
-                    <Row>
+                    <Row justify={"center"}>
                       <Col>
                         <Link href={event.linkTo}>
                           <Image
@@ -232,7 +232,7 @@ export default function EventsList() {
               (event: completeEventListInterface, index: number) => (
                 <>
                   <Col span={12}>
-                    <Row>
+                    <Row justify={"center"}>
                       <Col>
                         <Link href={event.linkTo}>
                           <Image
@@ -245,7 +245,7 @@ export default function EventsList() {
                       </Col>
                       <Col
                         className="mx-3 text-ellipsis overflow-hidden"
-                        style={{ width: 300 }}
+                        style={{ width: 250 }}
                       >
                         <Row gutter={[24, 24]}>
                           <Col className="text-xl">{event.eventName}</Col>
