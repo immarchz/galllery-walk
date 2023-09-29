@@ -13,7 +13,7 @@ import {
   message,
 } from "antd";
 import React from "react";
-import { InboxOutlined } from "@ant-design/icons";
+import { InboxOutlined, SyncOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -258,7 +258,7 @@ export default function createForm() {
                             />
                           </Form.Item>
                         </Col>
-                        {/* <Col span={4}>
+                        <Col span={4}>
                           <Button
                             style={{
                               color: "white",
@@ -269,7 +269,7 @@ export default function createForm() {
                           >
                             <SyncOutlined />
                           </Button>
-                        </Col> */}
+                        </Col>
                       </Row>
                       <Row className="mb-4" justify={"start"}>
                         <Col span={12}>Members</Col>
@@ -309,7 +309,7 @@ export default function createForm() {
                             </Col>
                             <Col span={6} className="flex items-center">
                               <Select
-                              defaultValue="admin"
+                                defaultValue="admin"
                                 style={{
                                   width: "100%",
                                   color: "black",
