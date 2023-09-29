@@ -29,6 +29,16 @@ export default function Admin() {
       email: "rockleelnwza@gmail.com",
       role: "Admin",
     },
+    {
+      name: "Rocklee lnwza",
+      email: "rockleelnwza@gmail.com",
+      role: "Admin",
+    },
+    {
+      name: "Rocklee lnwza",
+      email: "rockleelnwza@gmail.com",
+      role: "Admin",
+    },
   ]);
 
   const columns: ColumnsType<DataType> = [
@@ -85,60 +95,80 @@ export default function Admin() {
     }
   };
 
+  const onFinish = (values: any) => {
+    console.log("Success:", values);
+  };
+
   return (
-    <div className="text-white mx-5">
+    <div className="text-white mx-5 mb-5">
       <Row justify={"center"}>
         <Col span={20}>
           <Card
             title="Admin Dashboard"
-            style={{ width: "100%", height: "500px" }}
+            style={{ width: "100%", height: "100%" }}
           >
-            <Row justify={"start"}>
+            <Row gutter={[8, 8]} justify={"start"}>
               <Col className="mb-2">Add member</Col>
             </Row>
-            <Form>
+            <Form name="form" onFinish={onFinish}>
               <Row gutter={[24, 8]} justify={"start"}>
                 <Col xl={{ span: 8 }} xs={{ span: 24 }}>
-                  <Row>
+                  <Row className="mb-1">
                     <Col>Name</Col>
                   </Row>
                   <Row>
                     <Col span={24}>
-                      <Input />
+                      <Form.Item name={"name"}>
+                        <Input />
+                      </Form.Item>
                     </Col>
                   </Row>
                 </Col>
                 <Col xl={{ span: 8 }} xs={{ span: 24 }}>
-                  <Row>
+                  <Row className="mb-1">
                     <Col>Email</Col>
                   </Row>
                   <Row>
                     <Col span={24}>
-                      <Input />
+                      <Form.Item name={"email"}>
+                        <Input />
+                      </Form.Item>
                     </Col>
                   </Row>
                 </Col>
                 <Col xl={{ span: 8 }} xs={{ span: 24 }}>
-                  <Row>
+                  <Row className="mb-1">
                     <Col>Role</Col>
                   </Row>
                   <Row>
-                    <Col>
-                      <Select />
+                    <Col span={12}>
+                      <Form.Item name={"role"}>
+                        <Select
+                          style={{ width: "100%" }}
+                          defaultValue="admin"
+                          options={[{ value: "admin", label: "Admin" }]}
+                        />
+                      </Form.Item>
                     </Col>
                   </Row>
                 </Col>
               </Row>
               <Row justify={"start"}>
                 <Col span={24}>
-                  <Button className="my-3">Add</Button>
+                  <Button
+                    className="my-3 text-black"
+                    type="primary"
+                    htmlType="submit"
+                  >
+                    Add
+                  </Button>
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <Table
                     rowKey="key"
-                    pagination={false}
+                    pagination={{ pageSize: 3 }}
                     scroll={{ x: 1000, y: 500 }}
                     style={{ width: "100%" }}
                     columns={columns}
