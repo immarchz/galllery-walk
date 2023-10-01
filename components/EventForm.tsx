@@ -139,6 +139,16 @@ export default function EventForm({
     console.log(date, dateString);
   };
 
+  const styles = {
+    centeredButton: {
+      color: "white",
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center", // Horizontally center the content
+    },
+  };
+
   return (
     // <form
     //   style={{ background: "tomato" }}
@@ -394,15 +404,9 @@ export default function EventForm({
                       </Col>
                       <Col span={4}>
                         <Button
-                          style={{
-                            color: "white",
-                            width: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                        >
-                          <SyncOutlined />
-                        </Button>
+                          style={styles.centeredButton}
+                          icon={<SyncOutlined />}
+                        />
                       </Col>
                     </Row>
 

@@ -82,13 +82,16 @@ const styles = {
   },
 };
 
-export default function createForm() {
+export default function EditForm() {
   const members = membersArr;
   const { data: session } = useSession();
 
   if (session && session?.user) {
     return (
-      <div className="mx-10">
+      <div className="mx-10 mb-10">
+        <Row justify={"center"}>
+          <Col className="text-white mb-5 text-2xl">Edit Form</Col>
+        </Row>
         <Form name="projectCreate" autoComplete="off">
           <Row justify={"center"} gutter={[24, 24]} className="">
             <Col xs={24} xl={8}>
@@ -96,7 +99,7 @@ export default function createForm() {
                 className="text-white"
                 style={{
                   width: "100%",
-                  height: 1051,
+                  height: 800,
                   backgroundColor: "#1E1E1E",
                   border: "none",
                 }}
@@ -215,7 +218,7 @@ export default function createForm() {
                 className="text-white "
                 style={{
                   width: "100%",
-                  height: 1051,
+                  height: 800,
                   backgroundColor: "#1E1E1E",
                   border: "none",
                 }}
@@ -247,7 +250,7 @@ export default function createForm() {
                         <Col span={12}>Invitation Code</Col>
                       </Row>
                       <Row gutter={[24, 24]}>
-                        <Col span={20}>
+                        <Col xl={{ span: 20 }} xs={{ span: 18 }}>
                           <Form.Item<FieldType> name="link">
                             <Input
                               addonAfter={
@@ -262,17 +265,17 @@ export default function createForm() {
                                 width: "100%",
                                 height: 30,
                                 backgroundColor: "#1E1E1E",
-
                                 borderRadius: "6px",
                               }}
+                              className="flex"
                             />
                           </Form.Item>
                         </Col>
-                        <Col span={4}>
+                        <Col xl={{ span: 4 }} xs={{ span: 6 }}>
                           <Button
                             style={styles.centeredButton}
                             icon={<SyncOutlined />}
-                          />
+                          ></Button>
                         </Col>
                       </Row>
                       <Row className="mb-4" justify={"start"}>
