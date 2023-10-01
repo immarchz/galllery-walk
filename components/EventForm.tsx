@@ -19,10 +19,11 @@ import {
   message,
 } from "antd";
 import TextArea from "antd/es/input/TextArea";
-
+import type { DatePickerProps, TimePickerProps } from "antd";
 import Image from "next/image";
-import { InboxOutlined } from "@ant-design/icons";
+import { InboxOutlined, SyncOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
+import { name } from "./../.next/server/app/EventsList/page";
 
 export default function EventForm({
   user,
@@ -130,6 +131,24 @@ export default function EventForm({
     },
   };
 
+  const onFinish = (values) => {
+    console.log("values", values);
+  };
+
+  const onChange: DatePickerProps["onChange"] = (date, dateString) => {
+    console.log(date, dateString);
+  };
+
+  const styles = {
+    centeredButton: {
+      color: "white",
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center", // Horizontally center the content
+    },
+  };
+
   return (
     // <form
     //   style={{ background: "tomato" }}
@@ -187,7 +206,7 @@ export default function EventForm({
     //   <button type="submit">createEvent</button>
     // </form>
     <div className="mx-10">
-      <Form form={form} autoComplete="off">
+      <Form form={form} autoComplete="off" onFinish={onFinish}>
         <Row justify={"center"} gutter={[24, 24]} className="">
           <Col xs={24} xl={8}>
             <Card
@@ -259,7 +278,10 @@ export default function EventForm({
                         <Row className="mb-3">Event Start</Row>
                         <Form.Item name="event_start" {...config}>
                           <Row>
-                            <DatePicker style={{ width: "100%" }} />
+                            <DatePicker
+                              onChange={onChange}
+                              style={{ width: "100%" }}
+                            />
                           </Row>
                         </Form.Item>
                       </Col>
@@ -268,7 +290,10 @@ export default function EventForm({
                         <Row className="mb-3">Event End</Row>
                         <Form.Item name="event_end" {...config}>
                           <Row>
-                            <DatePicker style={{ width: "100%" }} />
+                            <DatePicker
+                              onChange={onChange}
+                              style={{ width: "100%" }}
+                            />
                           </Row>
                         </Form.Item>
                       </Col>
@@ -351,9 +376,7 @@ export default function EventForm({
                         </Form.Item>
                       </Col>
                     </Row>
-                    <Row className="mb-4" justify={"start"}>
-                      <Col span={12}>Members</Col>
-                    </Row>
+
                     <Row className="mb-4" justify={"start"}>
                       <Col span={12}>Invitation Code</Col>
                     </Row>
@@ -379,74 +402,19 @@ export default function EventForm({
                           />
                         </Form.Item>
                       </Col>
-                      {/* <Col span={4}>
-                      <Button
-                        style={{
-                          color: "white",
-                          width: "100%",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <SyncOutlined />
-                      </Button>
-                    </Col> */}
-                    </Row>
-                    <Row className="mb-4" justify={"start"}>
-                      <Col span={12}>Members</Col>
-                    </Row>
-                    <Row gutter={[24, 24]}>
-                      <Col span={24}>
-                        <Form.Item name="attach">
-                          <Input
-                            placeholder="Filter by name"
-                            style={{
-                              width: "100%",
-                              height: 32,
-                              backgroundColor: "#1E1E1E",
-                              borderRadius: "6px",
-                            }}
-                          />
-                        </Form.Item>
-                      </Col>
-                    </Row>
-
-                    <Row>
-                      <Col span={2} className="flex items-center">
-                        <Image
-                          src=""
-                          alt=""
-                          width={0}
-                          height={0}
-                          sizes="100vw"
-                          style={{ width: "100%", height: "auto" }}
-                          className="flex rounded-full "
+                      <Col span={4}>
+                        <Button
+                          style={styles.centeredButton}
+                          icon={<SyncOutlined />}
                         />
                       </Col>
-                      <Col span={1}></Col>
-                      <Col span={14} className="flex items-center"></Col>
-                      <Col span={6} className="flex items-center">
-                        <Select
-                          style={{
-                            width: "100%",
-                            color: "black",
-                          }}
-                          options={[
-                            { value: "admin", label: "Admin" },
-                            { value: "owner", label: "Owner" },
-                            { value: "member", label: "Member" },
-                          ]}
-                        />
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Divider style={{ borderColor: "white" }} />
                     </Row>
 
                     <Row justify={"center"}>
                       <Form.Item>
                         <Button
                           style={{ backgroundColor: "white", color: " black" }}
+                          htmlType="submit"
                           type="primary"
                         >
                           Submit
