@@ -33,7 +33,7 @@ const Comment = () => {
       <>
         <Form className="text-white">
           <Row className="my-10 flex flex-wrap" gutter={[24, 24]}>
-            <Col>
+            <Col xl={{ span: 4 }} xs={{ span: 8 }}>
               <Image
                 src={`${session.user.image}`}
                 alt=""
@@ -42,10 +42,10 @@ const Comment = () => {
                 className="flex rounded-full "
               />
             </Col>
-            <Col>
+            <Col xl={{ span: 14 }} xs={{ span: 16 }}>
               <TextArea style={{ height: 170, width: 500 }} />
             </Col>
-            <Col>
+            <Col xl={{ span: 6 }} xs={{ span: 16, offset: 8 }}>
               <Card title="Donate" style={{ height: 170, width: 200 }}>
                 <Row>
                   <Input className="mb-2"></Input>
