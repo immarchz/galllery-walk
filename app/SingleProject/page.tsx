@@ -129,6 +129,18 @@ export default function SingleEvent() {
                     ))}
                   </Col>
                 </Row>
+                <Row justify={"center"}>
+                  <Col>
+                    <Button
+                      style={{
+                        backgroundColor: "white",
+                      }}
+                      className="mt-8"
+                    >
+                      Edit
+                    </Button>
+                  </Col>
+                </Row>
                 <Divider className="  border-white" />
                 <Row justify="start" className="mt-5 ">
                   <Col>
@@ -218,6 +230,7 @@ export default function SingleEvent() {
                   ))}
                 </Col>
               </Row>
+
               <Divider className="  border-white" />
             </Col>
           </Row>

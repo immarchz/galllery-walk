@@ -45,8 +45,9 @@ const Comment = () => {
             <Col xl={{ span: 14 }} xs={{ span: 16 }}>
               <TextArea style={{ height: 170, width: 500 }} />
             </Col>
-            <Col xl={{ span: 6 }} xs={{ span: 16, offset: 8 }}>
-              <Card title="Donate" style={{ height: 170, width: 200 }}>
+            <Col xl={{ span: 0 }} xs={{ span: 8 }}></Col>
+            <Col xl={{ span: 6 }} xs={{ span: 16 }}>
+              <Card title="Donate" style={{ height: 170, width: "100%" }}>
                 <Row>
                   <Input className="mb-2"></Input>
                 </Row>
