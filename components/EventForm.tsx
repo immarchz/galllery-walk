@@ -23,7 +23,7 @@ import type { DatePickerProps, TimePickerProps } from "antd";
 import Image from "next/image";
 import { InboxOutlined, SyncOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
-import { name } from "./../.next/server/app/EventsList/page";
+// import { name } from "./../.next/server/app/EventsList/page";
 
 export default function EventForm({
   user,
@@ -131,7 +131,7 @@ export default function EventForm({
     },
   };
 
-  const onFinish = (values) => {
+  const onFinish = (values: any) => {
     console.log("values", values);
   };
 
