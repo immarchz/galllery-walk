@@ -301,7 +301,7 @@ export default function EditForm() {
                           <Row key={index}>
                             <Col span={2} className="flex items-center">
                               <Image
-                                src={`${session.user.image}`}
+                                src={`${session.user!.image}`}
                                 alt=""
                                 width={0}
                                 height={0}

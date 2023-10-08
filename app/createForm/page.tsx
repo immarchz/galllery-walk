@@ -82,7 +82,7 @@ const styles = {
   },
 };
 
-export default function createForm() {
+export default function CreateForm() {
   const members = membersArr;
   const { data: session } = useSession();
 
@@ -298,7 +298,7 @@ export default function createForm() {
                           <Row key={index}>
                             <Col span={2} className="flex items-center">
                               <Image
-                                src={`${session.user.image}`}
+                                src={`${session!.user!.image}`}
                                 alt=""
                                 width={0}
                                 height={0}
@@ -343,5 +343,7 @@ export default function createForm() {
         </Form>
       </div>
     );
+  } else {
+    return <div>No auth</div>;
   }
 }

@@ -25,17 +25,20 @@ interface DataType {
 export default function Admin() {
   const [dataSource, setdataSource] = useState([
     {
+      key: "Rocklee lnwza",
       name: "Rocklee lnwza",
       email: "rockleelnwza@gmail.com",
       role: "Admin",
     },
     {
-      name: "Rocklee lnwza",
+      key: "Rocklee s",
+      name: "Rocklee s",
       email: "rockleelnwza@gmail.com",
       role: "Admin",
     },
     {
-      name: "Rocklee lnwza",
+      key: "x lnwza",
+      name: "x lnwza",
       email: "rockleelnwza@gmail.com",
       role: "Admin",
     },
@@ -84,7 +87,7 @@ export default function Admin() {
     },
   ];
 
-  const handleDelete = (key) => {
+  const handleDelete = (key: any) => {
     // Find the index of the row to delete
     const dataIndex = dataSource.findIndex((item) => item.key === key);
     if (dataIndex !== -1) {
@@ -166,14 +169,14 @@ export default function Admin() {
               </Row>
               <Row>
                 <Col>
-                  <Table
+                  {/* <Table
                     rowKey="key"
                     pagination={{ pageSize: 3 }}
                     scroll={{ x: 1000, y: 500 }}
                     style={{ width: "100%" }}
                     columns={columns}
                     dataSource={dataSource}
-                  />
+                  /> */}
                 </Col>
               </Row>
             </Form>
