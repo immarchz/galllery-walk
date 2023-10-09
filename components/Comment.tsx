@@ -63,7 +63,7 @@ const Comment = () => {
               <Row gutter={[24, 24]}>
                 <Col className="">
                   <Image
-                    src={`${session.user.image}`}
+                    src={`${session.user!.image}`}
                     alt=""
                     width="80"
                     height="80"
