@@ -86,7 +86,7 @@ const LandingPage = () => {
       <Row gutter={[24, 24]} justify="center">
         <Col>
           {showevents.map((event: MainEventInterface, index: number) => (
-            <div key={index} className="flex text-white items-center">
+            <div key={index} className="flex text-white items-center mx-5">
               <Link href={event.linkTo}>
                 <Image
                   src={event.img}
@@ -101,7 +101,8 @@ const LandingPage = () => {
       </Row>
       <Row className="text-white my-10 mx-20">
         <Col
-          span={8}
+          xl={{ span: 8 }}
+          xs={{ span: 24 }}
           style={{ textAlign: "start" }}
           className="text-xl text-white"
         >
@@ -120,10 +121,10 @@ const LandingPage = () => {
                   />
                 </Link>
               </Row>
-              <p className="mt-5 xl:text-[20px]">{event.title}</p>
-              <p className="text-stone-400">{event.time}</p>
-              <p className="text-stone-400">{event.location}</p>
-              <p className="text-stone-400">{event.price} Baht</p>
+              <p className="mt-5 text-xl">{event.title}</p>
+              <p className="text-stone-400 text-lg">{event.time}</p>
+              <p className="text-stone-400 text-lg">{event.location}</p>
+              <p className="text-stone-400 text-lg">{event.price} Baht</p>
             </Col>
           ))}
         </Row>

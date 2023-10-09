@@ -205,7 +205,7 @@ export default function EventForm({
     //   <InputImage name="image" required />
     //   <button type="submit">createEvent</button>
     // </form>
-    <div className="mx-10">
+    <div className="mx-10 my-10">
       <Form form={form} autoComplete="off" onFinish={onFinish}>
         <Row justify={"center"} gutter={[24, 24]} className="">
           <Col xs={24} xl={8}>
@@ -213,7 +213,7 @@ export default function EventForm({
               className="text-white"
               style={{
                 width: "100%",
-                height: 1051,
+                height: 800,
                 backgroundColor: "#1E1E1E",
                 border: "none",
               }}
@@ -351,7 +351,7 @@ export default function EventForm({
               className="text-white "
               style={{
                 width: "100%",
-                height: 1051,
+                height: 800,
                 backgroundColor: "#1E1E1E",
                 border: "none",
               }}

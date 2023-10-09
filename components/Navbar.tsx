@@ -27,10 +27,10 @@ const Navbar = () => {
               />
             </Link>
           </div>
-          <div className="flex text-white items-center">
+          <div className="flex text-white items-center xl:text-xl">
             <Link href="/">Home</Link>
           </div>
-          <div className="flex text-white items-center">
+          <div className="flex text-white items-center xl:text-xl">
             <Link href="/EventsList">Events</Link>
           </div>
         </div>

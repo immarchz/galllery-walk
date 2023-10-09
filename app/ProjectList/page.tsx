@@ -64,7 +64,7 @@ export default function ProjectList() {
           <Row gutter={[8, 8]} justify={"center"}>
             <Col>
               <Row justify="start" className="mt-5 mb-3">
-                <Col className="xl:text-[20px]">{event.name}</Col>
+                <Col className="xl:text-lg xs:text-lg">{event.name}</Col>
               </Row>
               <Row justify={"center"}>
                 <Image

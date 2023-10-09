@@ -30,7 +30,7 @@ export default function LoginButton() {
           <Col className="mt-3" span={15}>
             <Row justify={"end"}>
               <Col
-                className="text-white "
+                className="text-white xl:text-lg"
                 style={{ textAlign: "right", wordWrap: "break-word" }}
               >
                 {session.user.name}
@@ -41,7 +41,7 @@ export default function LoginButton() {
                 <button
                   disabled={false}
                   type={"button"}
-                  className="flex flex-row-reverse mt-1 text-white "
+                  className="flex flex-row-reverse mt-1 text-white xl:text-lg"
                   onClick={() => signOut()}
                 >
                   Sign out
