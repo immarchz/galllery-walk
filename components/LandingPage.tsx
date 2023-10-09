@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+
 import { Col, Row } from "antd";
 
 interface EventInterface {

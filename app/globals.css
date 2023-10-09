@@ -14,3 +14,11 @@
     @apply 2xl:text-[72px]
     sm:text-[64px] text-[50px] font-extrabold;
 } */
+
+.custom-placeholder::placeholder {
+  color: #bfbfbf; /* Change this color to your desired placeholder color */
+}
+
+.my-element:hover {
+  border-color: white; /* Change border color on hover */
+}

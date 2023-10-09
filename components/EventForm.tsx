@@ -241,6 +241,7 @@ export default function EventForm({
                               height: 32,
                               backgroundColor: "#1E1E1E",
                               borderRadius: "6px",
+                              color: "white",
                             }}
                           />
                         </Form.Item>
@@ -268,6 +269,7 @@ export default function EventForm({
                               borderRadius: "6px",
                               verticalAlign: "top",
                               textAlign: "left",
+                              color: "white",
                             }}
                           />
                         </Form.Item>
@@ -371,6 +373,7 @@ export default function EventForm({
                               height: 30,
                               backgroundColor: "#1E1E1E",
                               borderRadius: "6px",
+                              color: "white",
                             }}
                           />
                         </Form.Item>
