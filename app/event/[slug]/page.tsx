@@ -3,7 +3,7 @@ import Image from "next/image";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import MailIcon from "@mui/icons-material/Mail";
-import { Button } from "antd";
+import { Button, Card, Col, List, Row } from "antd";
 import Stack from "@mui/material/Stack";
 import { prisma } from "@/lib/prisma";
 import { AppTime } from "@/helper/time";
@@ -11,6 +11,9 @@ import QrCode from "@/components/QrCode";
 import JoinEventButton from "@/components/Button/JoinEventButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { Event } from "@prisma/client";
+import Meta from "antd/es/card/Meta";
+import ProjectRender from "@/components/ProjectRender";
 
 export default async function EventPage({
   params,
@@ -43,10 +46,66 @@ export default async function EventPage({
     },
   });
 
+  const isUserJoinEvent = user ? event.participants.includes(user.id) : false;
+
   return (
     <div className="flex min-h-screen bg-cover bg-black text-white">
       <div className="flex w-full justify-center px-10">
         <div className="flex flex-col w-full items-center text-white">
+          {body(event, isUserJoinEvent)}
+          <Stack className="py-10" direction="row" spacing={10}>
+            <JoinEventButton user={user} event={event} />
+            <Link href={`/event/${params.slug}/create`}>
+              <Button className="bg-white text-black hover:bg-white">
+                Create project
+              </Button>
+            </Link>
+          </Stack>
+        </div>
+      </div>
+    </div>
+  );
+
+  function body(event: any, isUserJoinEvent: boolean) {
+    if (isUserJoinEvent) {
+      return (
+        <div className="text-white mx-10">
+          <div>
+            <Row gutter={[8, 8]} justify={"center"}>
+              <Col>
+                <Row justify="start" className="mt-5 mb-3">
+                  <Col className="xl:text-lg xs:text-lg">{event.title}</Col>
+                </Row>
+                <Row justify={"center"}>
+                  <Image
+                    src={event.display_image}
+                    alt="Event Pic"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </Row>
+
+                <Row justify={"start"} className="mt-5 mb-3">
+                  <Col className="xl:text-[20px]">Projects</Col>
+                </Row>
+                <Row justify={"center"}>
+                  {event.projects.length > 0 ? (
+                    <ProjectRender projects={event.project} />
+                  ) : (
+                    // eslint-disable-next-line react/no-unescaped-entities
+                    <div>we don't have project now</div>
+                  )}
+                </Row>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      );
+    } else
+      return (
+        <>
           <div className="w-full flex justify-center">
             <Image
               src={event.display_image}
@@ -85,18 +144,7 @@ export default async function EventPage({
           <div className="flex w-1/2">
             <QrCode value={`event/${params.slug}`} />
           </div>
-
-          <Stack className="py-10" direction="row" spacing={10}>
-            <JoinEventButton user={user} event={event} />
-
-            <Link href={`/event/${params.slug}/create`}>
-              <Button className="bg-white text-black hover:bg-white">
-                Create project
-              </Button>
-            </Link>
-          </Stack>
-        </div>
-      </div>
-    </div>
-  );
+        </>
+      );
+  }
 }
