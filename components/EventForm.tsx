@@ -32,29 +32,45 @@ export default function EventForm({
 }: {
   user: User;
   event: any;
-  create: boolean | undefined;
+  create?: boolean;
 }) {
   const updateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
 
+    const upload = await uploadImage("image", formData.get("image") as File);
+    const { url } = await upload.json();
+
     const body = {
-      name: formData.get("name"),
-      bio: formData.get("bio"),
-      age: formData.get("age"),
-      image: formData.get("image"),
+      id: event.id,
+      title: formData.get("title"),
+      description: formData.get("description"),
+      event_start: formData.get("event_start"),
+      event_end: formData.get("event_end"),
+      organizer: formData.get("organizer"),
+      money: formData.get("money"),
+      display_image: url,
+      user_id: user.id,
     };
 
-    const res = await fetch("/api/user", {
-      method: "PUT",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
+    toast.promise(
+      fetch("/api/event", {
+        method: "PUT",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }),
+      {
+        pending: "Toasss",
+        error: "",
+        success: "done",
       },
-    });
-
-    await res.json();
+      {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      }
+    );
   };
 
   const createEvent = async (e: React.FormEvent<HTMLFormElement>) => {

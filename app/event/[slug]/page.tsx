@@ -7,6 +7,7 @@ import { Button } from "antd";
 import Stack from "@mui/material/Stack";
 import { prisma } from "@/lib/prisma";
 import { AppTime } from "@/helper/time";
+import QrCode from "@/components/QrCode";
 
 export default async function EventPage({
   params,
@@ -67,6 +68,9 @@ export default async function EventPage({
           </div>
           <div className="flex w-1/2">
             <p>{event.organizer}</p>
+          </div>
+          <div className="flex w-1/2">
+            <QrCode value={`event/${params.slug}`} />
           </div>
 
           <Stack className="py-10" direction="row" spacing={10}>
