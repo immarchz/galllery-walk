@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+
 import { Col, Row } from "antd";
 import { prisma } from "@/lib/prisma";
 import { Event } from "@prisma/client";

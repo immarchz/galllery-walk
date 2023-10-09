@@ -124,6 +124,7 @@ export default function CreateForm() {
                                 height: 32,
                                 backgroundColor: "#1E1E1E",
                                 borderRadius: "6px",
+                                color: "white",
                               }}
                             />
                           </Form.Item>
@@ -152,6 +153,7 @@ export default function CreateForm() {
                                 borderRadius: "6px",
                                 verticalAlign: "top",
                                 textAlign: "left",
+                                color: "white",
                               }}
                             />
                           </Form.Item>
@@ -200,6 +202,7 @@ export default function CreateForm() {
                                 height: 32,
                                 backgroundColor: "#1E1E1E",
                                 borderRadius: "6px",
+                                color: "white",
                               }}
                             />
                           </Form.Item>
@@ -235,6 +238,7 @@ export default function CreateForm() {
                                 height: 30,
                                 backgroundColor: "#1E1E1E",
                                 borderRadius: "6px",
+                                color: "white",
                               }}
                             />
                           </Form.Item>
@@ -280,14 +284,16 @@ export default function CreateForm() {
                       </Row>
                       <Row gutter={[24, 24]}>
                         <Col span={24}>
-                          <Form.Item<FieldType> name="attach">
+                          <Form.Item<FieldType> name="members">
                             <Input
+                              className="custom-placeholder "
                               placeholder="Filter by name"
                               style={{
                                 width: "100%",
                                 height: 32,
                                 backgroundColor: "#1E1E1E",
                                 borderRadius: "6px",
+                                color: "white",
                               }}
                             />
                           </Form.Item>

@@ -131,14 +131,16 @@ export default function SingleEvent() {
                 </Row>
                 <Row justify={"center"}>
                   <Col>
-                    <Button
-                      style={{
-                        backgroundColor: "white",
-                      }}
-                      className="mt-8"
-                    >
-                      Edit
-                    </Button>
+                    <Link href={"/EditForm"}>
+                      <Button
+                        style={{
+                          backgroundColor: "white",
+                        }}
+                        className="mt-8"
+                      >
+                        Edit
+                      </Button>
+                    </Link>
                   </Col>
                 </Row>
                 <Divider className="  border-white" />
