@@ -275,7 +275,7 @@ export default function EditForm() {
                           <Button
                             style={styles.centeredButton}
                             icon={<SyncOutlined />}
-                          ></Button>
+                          />
                         </Col>
                       </Row>
                       <Row className="mb-4" justify={"start"}>

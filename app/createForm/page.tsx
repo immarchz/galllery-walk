@@ -88,7 +88,7 @@ export default function createForm() {
 
   if (session && session?.user) {
     return (
-      <div className="mx-10">
+      <div className="mx-10 mb-10">
         <Form name="projectCreate" autoComplete="off">
           <Row justify={"center"} gutter={[24, 24]} className="">
             <Col xs={24} xl={8}>
@@ -96,7 +96,7 @@ export default function createForm() {
                 className="text-white"
                 style={{
                   width: "100%",
-                  height: 1051,
+                  height: 800,
                   backgroundColor: "#1E1E1E",
                   border: "none",
                 }}
@@ -215,7 +215,7 @@ export default function createForm() {
                 className="text-white "
                 style={{
                   width: "100%",
-                  height: 1051,
+                  height: 800,
                   backgroundColor: "#1E1E1E",
                   border: "none",
                 }}
