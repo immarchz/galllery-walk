@@ -230,7 +230,6 @@ export default function SingleEvent() {
                   ))}
                 </Col>
               </Row>
-
               <Divider className="  border-white" />
             </Col>
           </Row>

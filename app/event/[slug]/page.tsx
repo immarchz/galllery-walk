@@ -8,6 +8,9 @@ import Stack from "@mui/material/Stack";
 import { prisma } from "@/lib/prisma";
 import { AppTime } from "@/helper/time";
 import QrCode from "@/components/QrCode";
+import JoinEventButton from "@/components/Button/JoinEventButton";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function EventPage({
   params,
@@ -20,6 +23,9 @@ export default async function EventPage({
         equals: params.slug,
       },
     },
+    include: {
+      projects: true,
+    },
   });
 
   if (!event) {
@@ -29,6 +35,13 @@ export default async function EventPage({
       </div>
     );
   }
+
+  const session = await getServerSession(authOptions);
+  const user = await prisma.user.findFirst({
+    where: {
+      email: session?.user?.email ?? "",
+    },
+  });
 
   return (
     <div className="flex min-h-screen bg-cover bg-black text-white">
@@ -74,13 +87,9 @@ export default async function EventPage({
           </div>
 
           <Stack className="py-10" direction="row" spacing={10}>
-            <Link href="ProjectList">
-              <Button className="bg-white text-black hover:bg-white">
-                Join as Guest
-              </Button>
-            </Link>
+            <JoinEventButton user={user} event={event} />
 
-            <Link href="/createForm">
+            <Link href={`/event/${params.slug}/create`}>
               <Button className="bg-white text-black hover:bg-white">
                 Create project
               </Button>
