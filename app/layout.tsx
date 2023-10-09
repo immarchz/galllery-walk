@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
-import "./globals.css";
 import type { Metadata } from "next";
 import ProvidersWrapper from "./ProviderWrapper";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,6 +19,7 @@ export default function RootLayout({
         <ProvidersWrapper>
           <Navbar />
           {children}
+          {/* <ToastContainer /> */}
         </ProvidersWrapper>
       </body>
     </html>
