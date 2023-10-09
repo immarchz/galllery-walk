@@ -73,22 +73,36 @@ export default async function EventPage({
           <div>
             <Row gutter={[8, 8]} justify={"center"}>
               <Col>
-                <Row justify="start" className="mt-5 mb-3">
-                  <Col className="xl:text-lg xs:text-lg">{event.title}</Col>
+                <Row justify={"center"} className="mt-5 mb-3">
+                  <Col
+                    xl={{ span: 16 }}
+                    xs={{ span: 24 }}
+                    className="xl:text-xl sm:text-lg "
+                  >
+                    {event.title}
+                  </Col>
                 </Row>
                 <Row justify={"center"}>
-                  <Image
-                    src={event.display_image}
-                    alt="Event Pic"
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: "100%", height: "100%" }}
-                  />
+                  <Col xl={{ span: 12 }} sm={{ span: 20 }} xs={{ span: 24 }}>
+                    <Image
+                      src={event.display_image}
+                      alt="Event Pic"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </Col>
                 </Row>
 
-                <Row justify={"start"} className="mt-5 mb-3">
-                  <Col className="xl:text-[20px]">Projects</Col>
+                <Row justify={"center"} className="mt-5 mb-3">
+                  <Col
+                    xl={{ span: 16 }}
+                    xs={{ span: 24 }}
+                    className="xl:text-xl sm:text-lg "
+                  >
+                    Projects
+                  </Col>
                 </Row>
                 <Row justify={"center"}>
                   {event.projects.length > 0 ? (
