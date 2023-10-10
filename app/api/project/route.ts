@@ -22,21 +22,25 @@ export async function POST(req: Request) {
   }
 
   const data = await req.json();
-  data.event_start = new Date(data.event_start);
-  data.event_end = new Date(data.event_end);
-  data.money = parseInt(data.money);
+  data.money = 0;
+  data.event = {
+    connect: {
+      id: data.event_id,
+    },
+  };
   data.user = {
     connect: {
       id: data.user_id,
     },
   };
+  delete data.event_id;
   delete data.user_id;
 
-  const event = await prisma.event.create({
+  const project = await prisma.project.create({
     data,
   });
 
-  return NextResponse.json(event);
+  return NextResponse.json(project);
 }
 
 export async function PUT(req: Request) {
@@ -46,28 +50,15 @@ export async function PUT(req: Request) {
   }
 
   const data = await req.json();
-  data.event_start = new Date(data.event_start);
-  data.event_end = new Date(data.event_end);
-  data.money = parseInt(data.money);
-  data.user = {
-    connect: {
-      id: data.user_id,
-    },
-  };
   const id = data.id;
-  delete data.user_id;
   delete data.id;
 
-  try {
-    const event = await prisma.event.update({
-      where: {
-        id,
-      },
-      data,
-    });
-    return NextResponse.json(event);
-  } catch (e) {
-    console.log(e);
-    return NextResponse.json(e);
-  }
+  const project = await prisma.project.update({
+    where: {
+      id,
+    },
+    data,
+  });
+
+  return NextResponse.json(project);
 }

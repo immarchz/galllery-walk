@@ -1,28 +1,25 @@
-import Link from "next/link";
-import Image from "next/image";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import StickyNote2Icon from "@mui/icons-material/StickyNote2";
-import MailIcon from "@mui/icons-material/Mail";
-import { Button, Col, Divider, Row } from "antd";
-import Stack from "@mui/material/Stack";
 import { prisma } from "@/lib/prisma";
-import { AppTime } from "@/helper/time";
-import QrCode from "@/components/QrCode";
+import { checkServerSession } from "@/utils/checkServerSession";
 import {
   ContainerOutlined,
   PaperClipOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
+import { Button, Col, Divider, Row } from "antd";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function ProjectPage({
   params,
 }: {
   params: { slug: string; project: string };
 }) {
+  await checkServerSession();
+
   const project = await prisma.project.findFirst({
     where: {
       id: {
-        equals: params.slug,
+        equals: params.project,
       },
     },
     include: {
@@ -116,14 +113,18 @@ export default async function ProjectPage({
             </Row>
             <Row justify={"center"}>
               <Col>
-                <Button
-                  style={{
-                    backgroundColor: "white",
-                  }}
-                  className="mt-8"
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_BASE_URL}/event/${params.slug}/${params.project}/edit`}
                 >
-                  Edit
-                </Button>
+                  <Button
+                    style={{
+                      backgroundColor: "white",
+                    }}
+                    className="mt-8"
+                  >
+                    Edit
+                  </Button>
+                </Link>
               </Col>
             </Row>
             <Divider className="  border-white" />

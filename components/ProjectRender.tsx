@@ -31,7 +31,7 @@ export default function ProjectRender({ projects }: { projects: Project[] }) {
           }}
         >
           <Link
-            href={`${process.env.NEXT_PUBLIC_BASE_URL}/${item.eventId}/${item.id}`}
+            href={`${process.env.NEXT_PUBLIC_BASE_URL}/event/${item.event_id}/${item.id}`}
           >
             <Card
               title={<Meta title={item.title} className="my-1" />}
