@@ -4,12 +4,13 @@ import { Button, Card, Col, Input, Row } from "antd";
 
 import Image from "next/image";
 import CommentForm from "./Form/CommentForm";
-import { Comment, Project, User } from "@prisma/client";
+import { Comment, Like, Project, User } from "@prisma/client";
+import LikeCommentButton from "./Button/LikeCommentButton";
 
 export default async function Comment({
   project,
 }: {
-  project: Project & { comments: (Comment & { user: User })[] };
+  project: Project & { comments: (Comment & { user: User; likes: Like[] })[] };
 }) {
   const session = await checkServerSession();
   const user = await findUserWithSession(session);
@@ -62,7 +63,10 @@ export default async function Comment({
                   {comment.user.email}
                 </Col>
               </Row>
-              <Col className="text-xl mb-3">{comment.comment}</Col>
+              <Col className="text-xl mb-3">
+                {comment.comment} 🌷 {comment.likes.length}
+                <LikeCommentButton comment={comment} user={user!} />
+              </Col>
             </Col>
           </Row>
         </div>
