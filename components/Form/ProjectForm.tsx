@@ -144,239 +144,239 @@ export default function ProjectForm({
   };
 
   return (
-    <form
-      style={{ background: "tomato" }}
-      onSubmit={create ? createProject : updateProject}
-    >
-      <label htmlFor="title">title</label>
-      <input
-        type="text"
-        name="title"
-        defaultValue={project?.title ?? ""}
-        required
-      />
+    // <form
+    //   style={{ background: "tomato" }}
+    //   onSubmit={create ? createProject : updateProject}
+    // >
+    //   <label htmlFor="title">title</label>
+    //   <input
+    //     type="text"
+    //     name="title"
+    //     defaultValue={project?.title ?? ""}
+    //     required
+    //   />
 
-      <label htmlFor="abstract">abstract</label>
-      <input
-        type="text"
-        name="abstract"
-        defaultValue={project?.abstract ?? ""}
-        required
-      />
+    //   <label htmlFor="abstract">abstract</label>
+    //   <input
+    //     type="text"
+    //     name="abstract"
+    //     defaultValue={project?.abstract ?? ""}
+    //     required
+    //   />
 
-      <InputImage name="image" placeholder={project?.display_image} required />
-      <button type="submit">{create ? "createproject" : "editproject"}</button>
-    </form>
-    // <div className="mx-10">
-    //   <Form form={form} autoComplete="off" onFinish={onFinish}>
-    //     <Row justify={"center"} gutter={[24, 24]} className="">
-    //       <Col xs={24} xl={8}>
-    //         <Card
-    //           className="text-white"
-    //           style={{
-    //             width: "100%",
-    //             height: 1051,
-    //             backgroundColor: "#1E1E1E",
-    //             border: "none",
-    //           }}
-    //         >
-    //           <Row justify={"start"}>
-    //             <Col xs={24} xl={24}>
-    //               <div className="mx-8 my-5 ">
-    //                 <Row className="my-4" justify={"start"}>
-    //                   <Col span={12}>Title</Col>
-    //                 </Row>
-    //                 <Row gutter={[24, 24]}>
-    //                   <Col span={24}>
-    //                     <Form.Item
-    //                       name="title"
-    //                       rules={[
-    //                         {
-    //                           required: true,
-    //                           message: "Please input your Project Title!",
-    //                         },
-    //                       ]}
-    //                     >
-    //                       <Input
-    //                         style={{
-    //                           width: "100%",
-    //                           height: 32,
-    //                           backgroundColor: "#1E1E1E",
-    //                           borderRadius: "6px",
-    //                           color: "white",
-    //                         }}
-    //                       />
-    //                     </Form.Item>
-    //                   </Col>
-    //                 </Row>
-    //                 <Row className="mb-4" justify={"start"}>
-    //                   <Col span={12}>Description</Col>
-    //                 </Row>
-    //                 <Row gutter={[24, 24]}>
-    //                   <Col span={24}>
-    //                     <Form.Item
-    //                       name="description"
-    //                       rules={[
-    //                         {
-    //                           required: true,
-    //                           message: "Please input your Project Description!",
-    //                         },
-    //                       ]}
-    //                     >
-    //                       <TextArea
-    //                         style={{
-    //                           width: "100%",
-    //                           height: 106,
-    //                           backgroundColor: "#1E1E1E",
-    //                           borderRadius: "6px",
-    //                           verticalAlign: "top",
-    //                           textAlign: "left",
-    //                           color: "white",
-    //                         }}
-    //                       />
-    //                     </Form.Item>
-    //                   </Col>
-    //                 </Row>
-    //                 <Row className="" justify={"start"}>
-    //                   <Col span={11}>
-    //                     <Row className="mb-3">Event Start</Row>
-    //                     <Form.Item name="event_start">
-    //                       <Row>
-    //                         <input
-    //                           type="datetime-local"
-    //                           name="event_start"
-    //                           defaultValue={event?.event_start ?? ""}
-    //                           required
-    //                         />
-    //                       </Row>
-    //                     </Form.Item>
-    //                   </Col>
-    //                   <Col span={2}></Col>
-    //                   <Col span={11}>
-    //                     <Row className="mb-3">Event End</Row>
-    //                     <Form.Item name="event_end">
-    //                       <Row>
-    //                         <input
-    //                           type="datetime-local"
-    //                           defaultValue={event?.event_end ?? ""}
-    //                           required
-    //                         />
-    //                       </Row>
-    //                     </Form.Item>
-    //                   </Col>
-    //                 </Row>
+    //   <InputImage name="image" placeholder={project?.display_image} required />
+    //   <button type="submit">{create ? "createproject" : "editproject"}</button>
+    // </form>
+    <div className="mx-10">
+      <form onSubmit={create ? createProject : updateProject}>
+        <Row justify={"center"} gutter={[24, 24]} className="">
+          <Col xs={24} xl={8}>
+            <Card
+              className="text-white"
+              style={{
+                width: "100%",
+                height: 1051,
+                backgroundColor: "#1E1E1E",
+                border: "none",
+              }}
+            >
+              <Row justify={"start"}>
+                <Col xs={24} xl={24}>
+                  <div className="mx-8 my-5 ">
+                    <Row className="my-4" justify={"start"}>
+                      <Col span={12}>Title</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item
+                          name="title"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please input your Project Title!",
+                            },
+                          ]}
+                        >
+                          <Input
+                            style={{
+                              width: "100%",
+                              height: 32,
+                              backgroundColor: "#1E1E1E",
+                              borderRadius: "6px",
+                              color: "white",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Description</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item
+                          name="description"
+                          rules={[
+                            {
+                              required: true,
+                              message: "Please input your Project Description!",
+                            },
+                          ]}
+                        >
+                          <TextArea
+                            style={{
+                              width: "100%",
+                              height: 106,
+                              backgroundColor: "#1E1E1E",
+                              borderRadius: "6px",
+                              verticalAlign: "top",
+                              textAlign: "left",
+                              color: "white",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    <Row className="" justify={"start"}>
+                      <Col span={11}>
+                        <Row className="mb-3">Event Start</Row>
+                        <Form.Item name="event_start">
+                          <Row>
+                            <input
+                              type="datetime-local"
+                              name="event_start"
+                              defaultValue={event?.event_start ?? ""}
+                              required
+                            />
+                          </Row>
+                        </Form.Item>
+                      </Col>
+                      <Col span={2}></Col>
+                      <Col span={11}>
+                        <Row className="mb-3">Event End</Row>
+                        <Form.Item name="event_end">
+                          <Row>
+                            <input
+                              type="datetime-local"
+                              defaultValue={event?.event_end ?? ""}
+                              required
+                            />
+                          </Row>
+                        </Form.Item>
+                      </Col>
+                    </Row>
 
-    //                 <Row className="mb-4" justify={"start"}>
-    //                   <Col span={12}>Upload Photo</Col>
-    //                 </Row>
-    //                 <Row gutter={[24, 24]}>
-    //                   <Col span={24}>
-    //                     <Form.Item name="image">
-    //                       <Dragger {...props}>
-    //                         <p className="ant-upload-drag-icon">
-    //                           <InboxOutlined />
-    //                         </p>
-    //                         <p className="text-white">
-    //                           Click or drag file to this area to upload
-    //                         </p>
-    //                         <p className="text-white">
-    //                           Support for a single or bulk upload. Strictly
-    //                           prohibited from uploading company data or other
-    //                           banned files.
-    //                         </p>
-    //                       </Dragger>
-    //                     </Form.Item>
-    //                   </Col>
-    //                 </Row>
-    //               </div>
-    //             </Col>
-    //           </Row>
-    //         </Card>
-    //       </Col>
-    //       <Col xs={24} xl={8}>
-    //         <Card
-    //           className="text-white "
-    //           style={{
-    //             width: "100%",
-    //             height: 1051,
-    //             backgroundColor: "#1E1E1E",
-    //             border: "none",
-    //             color: "white",
-    //           }}
-    //         >
-    //           <Row justify={"start"}>
-    //             <Col xs={24} xl={24}>
-    //               <div className="mx-8 my-5 ">
-    //                 <Row className="my-4" justify={"start"}>
-    //                   <Col span={12}>Organizer</Col>
-    //                 </Row>
-    //                 <Row gutter={[24, 24]}>
-    //                   <Col span={24}>
-    //                     <Form.Item name="organizer">
-    //                       <Input
-    //                         style={{
-    //                           width: "100%",
-    //                           height: 30,
-    //                           backgroundColor: "#1E1E1E",
-    //                           borderRadius: "6px",
-    //                           color: "white",
-    //                         }}
-    //                       />
-    //                     </Form.Item>
-    //                   </Col>
-    //                 </Row>
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Upload Photo</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item name="image">
+                          <Dragger {...props}>
+                            <p className="ant-upload-drag-icon">
+                              <InboxOutlined />
+                            </p>
+                            <p className="text-white">
+                              Click or drag file to this area to upload
+                            </p>
+                            <p className="text-white">
+                              Support for a single or bulk upload. Strictly
+                              prohibited from uploading company data or other
+                              banned files.
+                            </p>
+                          </Dragger>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+          <Col xs={24} xl={8}>
+            <Card
+              className="text-white "
+              style={{
+                width: "100%",
+                height: 1051,
+                backgroundColor: "#1E1E1E",
+                border: "none",
+                color: "white",
+              }}
+            >
+              <Row justify={"start"}>
+                <Col xs={24} xl={24}>
+                  <div className="mx-8 my-5 ">
+                    <Row className="my-4" justify={"start"}>
+                      <Col span={12}>Organizer</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Form.Item name="organizer">
+                          <Input
+                            style={{
+                              width: "100%",
+                              height: 30,
+                              backgroundColor: "#1E1E1E",
+                              borderRadius: "6px",
+                              color: "white",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                    </Row>
 
-    //                 <Row className="mb-4" justify={"start"}>
-    //                   <Col span={12}>Invitation Code</Col>
-    //                 </Row>
-    //                 <Row gutter={[24, 24]}>
-    //                   <Col span={20}>
-    //                     <Form.Item name="link">
-    //                       <Input
-    //                         addonAfter={
-    //                           <Button
-    //                             type="primary"
-    //                             style={{ backgroundColor: "#1E1E1E" }}
-    //                           >
-    //                             Copy
-    //                           </Button>
-    //                         }
-    //                         style={{
-    //                           width: "100%",
-    //                           height: 30,
-    //                           backgroundColor: "#1E1E1E",
+                    <Row className="mb-4" justify={"start"}>
+                      <Col span={12}>Invitation Code</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={20}>
+                        <Form.Item name="link">
+                          <Input
+                            addonAfter={
+                              <Button
+                                type="primary"
+                                style={{ backgroundColor: "#1E1E1E" }}
+                              >
+                                Copy
+                              </Button>
+                            }
+                            style={{
+                              width: "100%",
+                              height: 30,
+                              backgroundColor: "#1E1E1E",
 
-    //                           borderRadius: "6px",
-    //                         }}
-    //                       />
-    //                     </Form.Item>
-    //                   </Col>
-    //                   <Col span={4}>
-    //                     <Button
-    //                       style={styles.centeredButton}
-    //                       icon={<SyncOutlined />}
-    //                     />
-    //                   </Col>
-    //                 </Row>
+                              borderRadius: "6px",
+                            }}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col span={4}>
+                        <Button
+                          style={styles.centeredButton}
+                          icon={<SyncOutlined />}
+                        />
+                      </Col>
+                    </Row>
 
-    //                 <Row justify={"center"}>
-    //                   <Form.Item>
-    //                     <Button
-    //                       style={{ backgroundColor: "white", color: " black" }}
-    //                       htmlType="submit"
-    //                       type="primary"
-    //                     >
-    //                       Submit
-    //                     </Button>
-    //                   </Form.Item>
-    //                 </Row>
-    //               </div>
-    //             </Col>
-    //           </Row>
-    //         </Card>
-    //       </Col>
-    //     </Row>
-    //   </Form>
-    // </div>
+                    <Row justify={"center"}>
+                      <Form.Item>
+                        <Button
+                          style={{ backgroundColor: "white", color: " black" }}
+                          htmlType="submit"
+                          type="primary"
+                        >
+                          Submit
+                        </Button>
+                      </Form.Item>
+                    </Row>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+        </Row>
+      </form>
+    </div>
   );
 }

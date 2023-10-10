@@ -18,7 +18,7 @@ export default async function Comment({
   return (
     <div className="text-white">
       <Row className="my-10 flex flex-wrap" gutter={[24, 24]}>
-        <Col xl={{ span: 4 }} xs={{ span: 8 }}>
+        <Col xl={{ span: 4 }} xs={{ span: 6 }}>
           <Image
             src={`${user?.image}`}
             alt=""
@@ -30,7 +30,7 @@ export default async function Comment({
         <Col xl={{ span: 14 }} xs={{ span: 16 }}>
           <CommentForm user={user!} project_id={project.id} />
         </Col>
-        <Col xl={{ span: 0 }} xs={{ span: 8 }}></Col>
+        <Col xl={{ span: 0 }} xs={{ span: 6 }}></Col>
         <Col xl={{ span: 6 }} xs={{ span: 16 }}>
           <Card title="Donate" style={{ height: 170, width: "100%" }}>
             <Row>
@@ -44,8 +44,8 @@ export default async function Comment({
       </Row>
       {project.comments.map((comment, index: number) => (
         <div key={index}>
-          <Row gutter={[24, 24]}>
-            <Col className="">
+          <Row gutter={[24, 24]} className="mb-4">
+            <Col span={3} className="">
               <Image
                 src={comment.user.image ?? ""}
                 alt=""
@@ -54,20 +54,29 @@ export default async function Comment({
                 className="flex rounded-full bg-whit "
               />
             </Col>
-            <Col>
-              <Row>
-                <Col className="text-2xl mb-1 mr-3 flex items-center">
-                  {comment.user.name}
-                </Col>
-                <Col className="text-stone-400 flex items-center">
-                  {comment.user.email}
-                </Col>
-              </Row>
-              <Col className="text-xl mb-3">
-                {comment.comment} 🌷 {comment.likes.length}
+            <Row>
+              <Col span={24} className="text-xl flex items-center">
+                {comment.user.name}
+              </Col>
+              <Col span={16} className="text-stone-400 flex items-center">
+                {comment.user.email}
+              </Col>
+            </Row>
+
+            <Col span={24} className="text-xl mb-1">
+              {comment.comment}
+            </Col>
+            <Row gutter={[24, 24]}>
+              <Col span={2} className="flex items-center">
+                🌷
+              </Col>
+              <Col span={2} className="flex items-center">
+                {comment.likes.length}
+              </Col>
+              <Col span={10}>
                 <LikeCommentButton comment={comment} user={user!} />
               </Col>
-            </Col>
+            </Row>
           </Row>
         </div>
       ))}

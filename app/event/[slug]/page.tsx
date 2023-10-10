@@ -105,7 +105,7 @@ export default async function EventPage({
                 </Row>
                 <Row justify={"center"}>
                   {event.projects.length > 0 ? (
-                    <ProjectRender projects={event.project} />
+                    <ProjectRender projects={event.projects} />
                   ) : (
                     // eslint-disable-next-line react/no-unescaped-entities
                     <div>we don't have project now</div>

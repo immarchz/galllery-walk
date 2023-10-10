@@ -1,8 +1,12 @@
 "use client";
 
 import { User } from "@prisma/client";
+import { Col, Row } from "antd";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { Input } from "antd";
+
+const { TextArea } = Input;
 
 export default function CommentForm({
   user,
@@ -46,9 +50,19 @@ export default function CommentForm({
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="comment" />
-      <input type="text" name="comment" style={{ color: "black" }} />
-      <button type="submit">Comment</button>
+      <Row justify={"center"} gutter={[24, 24]}>
+        <Col span={24}>
+          <TextArea
+            name="comment"
+            style={{
+              color: "black",
+              width: "100%",
+              height: "150px",
+            }}
+          />
+          <button type="submit">Comment</button>
+        </Col>
+      </Row>
     </form>
   );
 }
