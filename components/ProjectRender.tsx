@@ -17,8 +17,8 @@ export default function ProjectRender({ projects }: { projects: Project[] }) {
         sm: 1,
         md: 2,
         lg: 2,
-        xl: 3,
-        xxl: 3,
+        xl: 2,
+        xxl: 2,
       }}
       dataSource={projects}
       renderItem={(item: Project) => (

@@ -26,11 +26,11 @@ export default async function Comment({
             className="flex rounded-full "
           />
         </Col>
-        <Col xl={{ span: 14 }} xs={{ span: 16 }}>
+        <Col xl={{ span: 12 }} xs={{ span: 16 }}>
           <CommentForm user={user!} project_id={project.id} />
         </Col>
         <Col xl={{ span: 0 }} xs={{ span: 8 }}></Col>
-        <Col xl={{ span: 6 }} xs={{ span: 16 }}>
+        <Col xl={{ span: 8 }} xs={{ span: 16 }}>
           <Card title="Donate" style={{ height: 170, width: "100%" }}>
             <Row>
               <Input className="mb-2"></Input>
@@ -43,8 +43,8 @@ export default async function Comment({
       </Row>
       {project.comments.map((comment, index: number) => (
         <div key={index}>
-          <Row gutter={[24, 24]}>
-            <Col className="">
+          <Row gutter={[24, 24]} className="mb-3">
+            <Col span={4} className="">
               <Image
                 src={comment.user.image ?? ""}
                 alt=""
@@ -53,16 +53,20 @@ export default async function Comment({
                 className="flex rounded-full bg-whit "
               />
             </Col>
-            <Col>
-              <Row>
-                <Col className="text-2xl mb-1 mr-3 flex items-center">
-                  {comment.user.name}
-                </Col>
-                <Col className="text-stone-400 flex items-center">
-                  {comment.user.email}
-                </Col>
-              </Row>
-              <Col className="text-xl mb-3">{comment.comment}</Col>
+
+            <Col
+              xl={{ span: 7 }}
+              xs={{ span: 8 }}
+              className="xl:text-xl  mb-1 flex items-center"
+            >
+              <p className="">{comment.user.name}</p>
+            </Col>
+            <Col span={8} className="text-stone-400 flex items-center">
+              <p>{comment.user.email}</p>
+            </Col>
+
+            <Col span={24} className="xl:text-xl sm:text:lg mb-3">
+              {comment.comment}
             </Col>
           </Row>
         </div>
