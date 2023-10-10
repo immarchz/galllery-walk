@@ -57,7 +57,7 @@ export default function CommentForm({
             style={{
               color: "black",
               width: "100%",
-              height: "150px",
+              height: "200px",
             }}
           />
           <button type="submit">Comment</button>

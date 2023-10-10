@@ -201,7 +201,7 @@ export default function EventForm({
     //   <InputImage name="image" placeholder={event?.display_image} required />
     //   <button type="submit">{create ? "create event" : "edit event"}</button>
     // </form>
-    <div className="mx-10">
+    <div className="mx-10 mb-10">
       <form onSubmit={create ? createEvent : updateEvent}>
         <Row justify={"center"} gutter={[24, 24]} className="">
           <Col xs={24} xl={8}>
@@ -209,7 +209,7 @@ export default function EventForm({
               className="text-white"
               style={{
                 width: "100%",
-                height: 1051,
+                height: 800,
                 backgroundColor: "#1E1E1E",
                 border: "none",
               }}
@@ -222,95 +222,86 @@ export default function EventForm({
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
-                        <Form.Item
+                        <Input
+                          type="text"
                           name="title"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your Project Title!",
-                            },
-                          ]}
-                        >
-                          <Input
-                            style={{
-                              width: "100%",
-                              height: 32,
-                              backgroundColor: "#1E1E1E",
-                              borderRadius: "6px",
-                              color: "white",
-                            }}
-                          />
-                        </Form.Item>
+                          defaultValue={event?.title ?? ""}
+                          required
+                          style={{
+                            width: "100%",
+                            height: 32,
+                            backgroundColor: "#1E1E1E",
+                            borderRadius: "6px",
+                            color: "white",
+                          }}
+                        />
                       </Col>
                     </Row>
-                    <Row className="mb-4" justify={"start"}>
+                    <Row className="my-4" justify={"start"}>
                       <Col span={12}>Description</Col>
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
-                        <Form.Item
+                        <TextArea
                           name="description"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your Project Description!",
-                            },
-                          ]}
-                        >
-                          <TextArea
-                            style={{
-                              width: "100%",
-                              height: 106,
-                              backgroundColor: "#1E1E1E",
-                              borderRadius: "6px",
-                              verticalAlign: "top",
-                              textAlign: "left",
-                              color: "white",
-                            }}
-                          />
-                        </Form.Item>
+                          defaultValue={event?.description ?? ""}
+                          required
+                          style={{
+                            width: "100%",
+                            height: 106,
+                            backgroundColor: "#1E1E1E",
+                            borderRadius: "6px",
+                            verticalAlign: "top",
+                            textAlign: "left",
+                            color: "white",
+                          }}
+                        />
                       </Col>
                     </Row>
                     <Row className="" justify={"start"}>
                       <Col span={11}>
-                        <Row className="mb-3">Event Start</Row>
-                        <Form.Item name="event_start">
-                          <Row>
-                            <input
-                              type="datetime-local"
-                              name="event_start"
-                              defaultValue={event?.event_start ?? ""}
-                              required
-                            />
-                          </Row>
-                        </Form.Item>
+                        <Row className="my-4">Event Start</Row>
+
+                        <Row>
+                          <input
+                          style={{
+                            width: "100%",
+                          }}
+                            type="datetime-local"
+                            name="event_start"
+                            defaultValue={event?.event_start ?? ""}
+                            required
+                          />
+                        </Row>
                       </Col>
                       <Col span={2}></Col>
                       <Col span={11}>
-                        <Row className="mb-3">Event End</Row>
-                        <Form.Item name="event_end">
-                          <Row>
-                            <input
-                              type="datetime-local"
-                              defaultValue={event?.event_end ?? ""}
-                              required
-                            />
-                          </Row>
-                        </Form.Item>
+                        <Row className="my-4">Event End</Row>
+
+                        <Row>
+                          <input
+                            style={{
+                              width: "100%",
+                            }}
+                            type="datetime-local"
+                            name="event_end"
+                            defaultValue={event?.event_end ?? ""}
+                            required
+                          />
+                        </Row>
                       </Col>
                     </Row>
 
-                    <Row className="mb-4" justify={"start"}>
+                    <Row className="my-4" justify={"start"}>
                       <Col span={12}>Upload Photo</Col>
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
-                        <Form.Item name="image">
-                          <InputImage
-                            placeholder={event?.display_image}
-                            required
-                          />
-                        </Form.Item>
+                        <InputImage
+                          name="image"
+                          placeholder={event?.display_image}
+                          required
+                        />
                       </Col>
                     </Row>
                   </div>
@@ -323,7 +314,7 @@ export default function EventForm({
               className="text-white "
               style={{
                 width: "100%",
-                height: 1051,
+                height: 800,
                 backgroundColor: "#1E1E1E",
                 border: "none",
                 color: "white",
@@ -337,44 +328,65 @@ export default function EventForm({
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
-                        <Form.Item name="organizer">
-                          <Input
-                            style={{
-                              width: "100%",
-                              height: 30,
-                              backgroundColor: "#1E1E1E",
-                              borderRadius: "6px",
-                              color: "white",
-                            }}
-                          />
-                        </Form.Item>
+                        <Input
+                          type="text"
+                          name="organizer"
+                          defaultValue={event?.organizer ?? ""}
+                          required
+                          style={{
+                            width: "100%",
+                            height: 30,
+                            backgroundColor: "#1E1E1E",
+                            borderRadius: "6px",
+                            color: "white",
+                          }}
+                        />
                       </Col>
                     </Row>
 
-                    <Row className="mb-4" justify={"start"}>
+                    <Row className="my-4" justify={"start"}>
+                      <Col span={12}>Money</Col>
+                    </Row>
+                    <Row gutter={[24, 24]}>
+                      <Col span={24}>
+                        <Input
+                          type="text"
+                          name="money"
+                          defaultValue={event?.organizer ?? ""}
+                          required
+                          style={{
+                            width: "100%",
+                            height: 30,
+                            backgroundColor: "#1E1E1E",
+                            borderRadius: "6px",
+                            color: "white",
+                          }}
+                        />
+                      </Col>
+                    </Row>
+
+                    <Row className="my-4" justify={"start"}>
                       <Col span={12}>Invitation Code</Col>
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={20}>
-                        <Form.Item name="link">
-                          <Input
-                            addonAfter={
-                              <Button
-                                type="primary"
-                                style={{ backgroundColor: "#1E1E1E" }}
-                              >
-                                Copy
-                              </Button>
-                            }
-                            style={{
-                              width: "100%",
-                              height: 30,
-                              backgroundColor: "#1E1E1E",
+                        <Input
+                          addonAfter={
+                            <Button
+                              type="primary"
+                              style={{ backgroundColor: "#1E1E1E" }}
+                            >
+                              Copy
+                            </Button>
+                          }
+                          style={{
+                            width: "100%",
+                            height: 30,
+                            backgroundColor: "#1E1E1E",
 
-                              borderRadius: "6px",
-                            }}
-                          />
-                        </Form.Item>
+                            borderRadius: "6px",
+                          }}
+                        />
                       </Col>
                       <Col span={4}>
                         <Button
@@ -384,16 +396,13 @@ export default function EventForm({
                       </Col>
                     </Row>
 
-                    <Row justify={"center"}>
-                      <Form.Item>
-                        <Button
-                          style={{ backgroundColor: "white", color: " black" }}
-                          htmlType="submit"
-                          type="primary"
-                        >
-                          Submit
-                        </Button>
-                      </Form.Item>
+                    <Row justify={"center"} className="mt-3">
+                      <Button
+                        style={{ backgroundColor: "white", color: " black" }}
+                        htmlType="submit"
+                      >
+                        {create ? "Create Event" : "Edit Event"}
+                      </Button>
                     </Row>
                   </div>
                 </Col>

@@ -32,12 +32,20 @@ export default async function Comment({
         </Col>
         <Col xl={{ span: 0 }} xs={{ span: 6 }}></Col>
         <Col xl={{ span: 6 }} xs={{ span: 16 }}>
-          <Card title="Donate" style={{ height: 170, width: "100%" }}>
+          <Card title="Donate" style={{ height: 200, width: "100%" }}>
             <Row>
               <Input className="mb-2"></Input>
             </Row>
             <Row justify={"center"}>
               <Button>Donate</Button>
+            </Row>
+            <Row justify={"start"} className="mt-2 flex items-center">
+              <Col>
+                <p className="mr-1">Your Currency:</p>
+              </Col>
+              <Col>
+                <p className="flex items-center">70</p>
+              </Col>
             </Row>
           </Card>
         </Col>

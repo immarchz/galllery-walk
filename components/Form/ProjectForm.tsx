@@ -91,8 +91,6 @@ export default function ProjectForm({
     // await res.json();
   };
 
-  const [form] = Form.useForm();
-
   const config = {
     rules: [
       {
@@ -102,8 +100,6 @@ export default function ProjectForm({
       },
     ],
   };
-
-  const { Dragger } = Upload;
 
   const props: UploadProps = {
     name: "file",
@@ -123,10 +119,6 @@ export default function ProjectForm({
     onDrop(e) {
       console.log("Dropped files", e.dataTransfer.files);
     },
-  };
-
-  const onFinish = (values: any) => {
-    console.log("values", values);
   };
 
   const onChange: DatePickerProps["onChange"] = (date, dateString) => {
@@ -188,81 +180,40 @@ export default function ProjectForm({
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
-                        <Form.Item
+                        <Input
+                          type="text"
                           name="title"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your Project Title!",
-                            },
-                          ]}
-                        >
-                          <Input
-                            style={{
-                              width: "100%",
-                              height: 32,
-                              backgroundColor: "#1E1E1E",
-                              borderRadius: "6px",
-                              color: "white",
-                            }}
-                          />
-                        </Form.Item>
+                          defaultValue={project?.title ?? ""}
+                          required
+                          style={{
+                            width: "100%",
+                            height: 32,
+                            backgroundColor: "#1E1E1E",
+                            borderRadius: "6px",
+                            color: "white",
+                          }}
+                        />
                       </Col>
                     </Row>
-                    <Row className="mb-4" justify={"start"}>
-                      <Col span={12}>Description</Col>
+                    <Row className="my-4" justify={"start"}>
+                      <Col span={12}>Abstract</Col>
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
-                        <Form.Item
-                          name="description"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Please input your Project Description!",
-                            },
-                          ]}
-                        >
-                          <TextArea
-                            style={{
-                              width: "100%",
-                              height: 106,
-                              backgroundColor: "#1E1E1E",
-                              borderRadius: "6px",
-                              verticalAlign: "top",
-                              textAlign: "left",
-                              color: "white",
-                            }}
-                          />
-                        </Form.Item>
-                      </Col>
-                    </Row>
-                    <Row className="" justify={"start"}>
-                      <Col span={11}>
-                        <Row className="mb-3">Event Start</Row>
-                        <Form.Item name="event_start">
-                          <Row>
-                            <input
-                              type="datetime-local"
-                              name="event_start"
-                              defaultValue={event?.event_start ?? ""}
-                              required
-                            />
-                          </Row>
-                        </Form.Item>
-                      </Col>
-                      <Col span={2}></Col>
-                      <Col span={11}>
-                        <Row className="mb-3">Event End</Row>
-                        <Form.Item name="event_end">
-                          <Row>
-                            <input
-                              type="datetime-local"
-                              defaultValue={event?.event_end ?? ""}
-                              required
-                            />
-                          </Row>
-                        </Form.Item>
+                        <TextArea
+                          name="abstract"
+                          defaultValue={project?.abstract ?? ""}
+                          required
+                          style={{
+                            width: "100%",
+                            height: 106,
+                            backgroundColor: "#1E1E1E",
+                            borderRadius: "6px",
+                            verticalAlign: "top",
+                            textAlign: "left",
+                            color: "white",
+                          }}
+                        />
                       </Col>
                     </Row>
 
@@ -271,21 +222,11 @@ export default function ProjectForm({
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
-                        <Form.Item name="image">
-                          <Dragger {...props}>
-                            <p className="ant-upload-drag-icon">
-                              <InboxOutlined />
-                            </p>
-                            <p className="text-white">
-                              Click or drag file to this area to upload
-                            </p>
-                            <p className="text-white">
-                              Support for a single or bulk upload. Strictly
-                              prohibited from uploading company data or other
-                              banned files.
-                            </p>
-                          </Dragger>
-                        </Form.Item>
+                        <InputImage
+                          name="image"
+                          placeholder={project?.display_image}
+                          required
+                        />
                       </Col>
                     </Row>
                   </div>
@@ -308,48 +249,27 @@ export default function ProjectForm({
                 <Col xs={24} xl={24}>
                   <div className="mx-8 my-5 ">
                     <Row className="my-4" justify={"start"}>
-                      <Col span={12}>Organizer</Col>
-                    </Row>
-                    <Row gutter={[24, 24]}>
-                      <Col span={24}>
-                        <Form.Item name="organizer">
-                          <Input
-                            style={{
-                              width: "100%",
-                              height: 30,
-                              backgroundColor: "#1E1E1E",
-                              borderRadius: "6px",
-                              color: "white",
-                            }}
-                          />
-                        </Form.Item>
-                      </Col>
-                    </Row>
-
-                    <Row className="mb-4" justify={"start"}>
                       <Col span={12}>Invitation Code</Col>
                     </Row>
                     <Row gutter={[24, 24]}>
                       <Col span={20}>
-                        <Form.Item name="link">
-                          <Input
-                            addonAfter={
-                              <Button
-                                type="primary"
-                                style={{ backgroundColor: "#1E1E1E" }}
-                              >
-                                Copy
-                              </Button>
-                            }
-                            style={{
-                              width: "100%",
-                              height: 30,
-                              backgroundColor: "#1E1E1E",
+                        <Input
+                          addonAfter={
+                            <Button
+                              type="primary"
+                              style={{ backgroundColor: "#1E1E1E" }}
+                            >
+                              Copy
+                            </Button>
+                          }
+                          style={{
+                            width: "100%",
+                            height: 30,
+                            backgroundColor: "#1E1E1E",
 
-                              borderRadius: "6px",
-                            }}
-                          />
-                        </Form.Item>
+                            borderRadius: "6px",
+                          }}
+                        />
                       </Col>
                       <Col span={4}>
                         <Button
@@ -359,16 +279,14 @@ export default function ProjectForm({
                       </Col>
                     </Row>
 
-                    <Row justify={"center"}>
-                      <Form.Item>
-                        <Button
-                          style={{ backgroundColor: "white", color: " black" }}
-                          htmlType="submit"
-                          type="primary"
-                        >
-                          Submit
-                        </Button>
-                      </Form.Item>
+                    <Row className="my-4" justify={"center"}>
+                      <Button
+                        style={{ backgroundColor: "white", color: " black" }}
+                        htmlType="submit"
+                        type="primary"
+                      >
+                        {create ? "Create Project" : "Edit Project"}
+                      </Button>
                     </Row>
                   </div>
                 </Col>
