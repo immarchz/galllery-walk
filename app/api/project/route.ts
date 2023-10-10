@@ -3,18 +3,6 @@ import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/prisma";
 import { authOptions } from "../auth/[...nextauth]/route";
 
-export async function GET(req: Request) {
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    return NextResponse.redirect("/");
-  }
-
-  //   const project = await prisma.event.findFirst();
-
-  //   return NextResponse.json(events);
-}
-
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
   if (!session) {
