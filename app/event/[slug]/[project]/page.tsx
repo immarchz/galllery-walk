@@ -8,6 +8,7 @@ import {
 import { Button, Col, Divider, Row } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import Comment from "@/components/Comment";
 
 export default async function ProjectPage({
   params,
@@ -24,7 +25,12 @@ export default async function ProjectPage({
     },
     include: {
       transactions: true,
-      comments: true,
+      comments: {
+        include: {
+          user: true,
+          likes: true,
+        },
+      },
     },
   });
 
@@ -129,7 +135,9 @@ export default async function ProjectPage({
             </Row>
             <Divider className="  border-white" />
             <Row justify="start" className="mt-5 ">
-              <Col>{/* <Comment /> */}</Col>
+              <Col>
+                <Comment project={project} />
+              </Col>
             </Row>
           </Col>
         </Row>

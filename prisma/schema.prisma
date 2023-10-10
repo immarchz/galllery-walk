@@ -143,7 +143,6 @@ model Invite {
   expired DateTime 
 
   @@map("invites")
-
 }
 
 
