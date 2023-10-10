@@ -9,6 +9,7 @@ import { Button, Col, Divider, Row } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import Comment from "@/components/Comment";
+import QrCode from "@/components/QrCode";
 
 export default async function ProjectPage({
   params,
@@ -117,6 +118,7 @@ export default async function ProjectPage({
                 ))} */}
               </Col>
             </Row>
+            <QrCode value={`event/${params.slug}/${params.project}`} />
             <Row justify={"center"}>
               <Col>
                 <Link

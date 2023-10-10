@@ -1,5 +1,5 @@
 "use client";
-import { Comment, User } from "@prisma/client";
+import { Comment, Like, User } from "@prisma/client";
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -8,7 +8,7 @@ export default function LikeCommentButton({
   comment,
   user,
 }: {
-  comment: Comment;
+  comment: Comment & { user: User; likes: Like[] };
   user: User;
 }) {
   const router = useRouter();
@@ -21,14 +21,14 @@ export default function LikeCommentButton({
 
     await toast.promise(
       fetch("/api/project/comment/like", {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
         },
       }),
       {
-        pending: "Joining event ..",
+        pending: "Like ..",
         error: "",
         success: "done",
       },
@@ -47,14 +47,14 @@ export default function LikeCommentButton({
 
     await toast.promise(
       fetch("/api/project/comment/like", {
-        method: "PUT",
+        method: "DELETE",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
         },
       }),
       {
-        pending: "Joining event ..",
+        pending: "Dis Like ..",
         error: "",
         success: "done",
       },
@@ -65,14 +65,15 @@ export default function LikeCommentButton({
     router.refresh();
   }
 
-  const isUesrJoin = true;
+  const isUserLike =
+    comment.likes.filter((cm) => cm.userId === user.id).length > 0;
 
   return (
     <Button
       className="bg-white text-black hover:bg-white"
-      onClick={isUesrJoin ? dislike : like}
+      onClick={isUserLike ? dislike : like}
     >
-      {isUesrJoin ? "dislike" : "like"}
+      {isUserLike ? "💔" : "❤️"}
     </Button>
   );
 }

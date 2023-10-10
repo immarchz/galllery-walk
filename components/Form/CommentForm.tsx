@@ -50,12 +50,7 @@ export default function CommentForm({
   return (
     <form onSubmit={onSubmit}>
       <label htmlFor="comment" />
-      <TextArea
-        rows={4}
-        type="text"
-        name="comment"
-        style={{ color: "black" }}
-      />
+      <TextArea rows={4} name="comment" style={{ color: "black" }} />
       <button type="submit">Comment</button>
     </form>
   );
