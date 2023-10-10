@@ -1,29 +1,13 @@
 "use client";
 
-import { User } from "@prisma/client";
-import { toast } from "react-toastify";
-import InputImage from "./InputImage";
 import { uploadImage } from "@/utils/upload_image";
-import {
-  Button,
-  Card,
-  Col,
-  DatePicker,
-  Divider,
-  Form,
-  Input,
-  Row,
-  Select,
-  TimePicker,
-  Upload,
-  message,
-} from "antd";
-import TextArea from "antd/es/input/TextArea";
-import type { DatePickerProps, TimePickerProps } from "antd";
-import Image from "next/image";
 import { InboxOutlined, SyncOutlined } from "@ant-design/icons";
-import type { UploadProps } from "antd";
-// import { name } from "./../.next/server/app/EventsList/page";
+import { User } from "@prisma/client";
+import type { DatePickerProps, UploadProps } from "antd";
+import { Button, Card, Col, Form, Input, Row, Upload, message } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { toast } from "react-toastify";
+import InputImage from "../InputImage";
 
 export default function EventForm({
   user,
@@ -54,7 +38,7 @@ export default function EventForm({
       user_id: user.id,
     };
 
-    toast.promise(
+    await toast.promise(
       fetch("/api/event", {
         method: "PUT",
         body: JSON.stringify(body),
@@ -92,7 +76,7 @@ export default function EventForm({
       user_id: user.id,
     };
 
-    toast.promise(
+    await toast.promise(
       fetch("/api/event", {
         method: "POST",
         body: JSON.stringify(body),
@@ -113,8 +97,6 @@ export default function EventForm({
     // await res.json();
   };
 
-  const [form] = Form.useForm();
-
   const config = {
     rules: [
       {
@@ -124,8 +106,6 @@ export default function EventForm({
       },
     ],
   };
-
-  const { Dragger } = Upload;
 
   const props: UploadProps = {
     name: "file",
@@ -187,13 +167,13 @@ export default function EventForm({
     //   />
     //   <label htmlFor="event_start">event_start</label>
 
-    //  <input
-    //    type="datetime-local"
-    //    name="event_start"
-    //    defaultValue={event?.event_start ?? ""}
-    //    required
-    //  />
-    //  <label htmlFor="event_end">event_end</label>
+    //   <input
+    //     type="datetime-local"
+    //     name="event_start"
+    //     defaultValue={event?.event_start ?? ""}
+    //     required
+    //   />
+    //   <label htmlFor="event_end">event_end</label>
 
     //   <input
     //     type="datetime-local"
@@ -218,11 +198,11 @@ export default function EventForm({
     //     pattern="[0-9]{1,5}"
     //     required
     //   />
-    //   <InputImage name="image" required />
-    //   <button type="submit">createEvent</button>
+    //   <InputImage name="image" placeholder={event?.display_image} required />
+    //   <button type="submit">{create ? "create event" : "edit event"}</button>
     // </form>
     <div className="mx-10">
-      <Form form={form} autoComplete="off" onFinish={onFinish}>
+      <form onSubmit={create ? createEvent : updateEvent}>
         <Row justify={"center"} gutter={[24, 24]} className="">
           <Col xs={24} xl={8}>
             <Card
@@ -326,19 +306,10 @@ export default function EventForm({
                     <Row gutter={[24, 24]}>
                       <Col span={24}>
                         <Form.Item name="image">
-                          <Dragger {...props}>
-                            <p className="ant-upload-drag-icon">
-                              <InboxOutlined />
-                            </p>
-                            <p className="text-white">
-                              Click or drag file to this area to upload
-                            </p>
-                            <p className="text-white">
-                              Support for a single or bulk upload. Strictly
-                              prohibited from uploading company data or other
-                              banned files.
-                            </p>
-                          </Dragger>
+                          <InputImage
+                            placeholder={event?.display_image}
+                            required
+                          />
                         </Form.Item>
                       </Col>
                     </Row>
@@ -430,7 +401,7 @@ export default function EventForm({
             </Card>
           </Col>
         </Row>
-      </Form>
+      </form>
     </div>
   );
 }

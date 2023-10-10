@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import EventForm from "@/components/EventForm";
+import EventForm from "@/components/Form/EventForm";
 import { prisma } from "@/lib/prisma";
 
 import { getServerSession } from "next-auth";

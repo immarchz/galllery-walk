@@ -17,8 +17,8 @@ export default function ProjectRender({ projects }: { projects: Project[] }) {
         sm: 1,
         md: 2,
         lg: 2,
-        xl: 3,
-        xxl: 3,
+        xl: 2,
+        xxl: 2,
       }}
       dataSource={projects}
       renderItem={(item: Project) => (
@@ -31,11 +31,11 @@ export default function ProjectRender({ projects }: { projects: Project[] }) {
           }}
         >
           <Link
-            href={`${process.env.NEXT_PUBLIC_BASE_URL}/${item.eventId}/${item.id}`}
+            href={`${process.env.NEXT_PUBLIC_BASE_URL}/event/${item.event_id}/${item.id}`}
           >
             <Card
               title={<Meta title={item.title} className="my-1" />}
-              style={{ width: 300 }}
+              style={{ width: 300, height: 400 }}
               cover={
                 <Image
                   alt=""

@@ -5,10 +5,12 @@ import Image from "next/image";
 
 export default function InputImage({
   name,
-  required = undefined,
+  placeholder,
+  required,
 }: {
   name: string;
-  required: undefined | boolean;
+  placeholder?: string;
+  required?: boolean;
 }) {
   const [file, setFile] = useState<File>();
 
@@ -33,6 +35,8 @@ export default function InputImage({
           height={200}
           alt={file!.name}
         />
+      ) : placeholder ? (
+        <Image src={placeholder} width={200} height={200} alt={"placeholer"} />
       ) : null}
     </div>
   );
