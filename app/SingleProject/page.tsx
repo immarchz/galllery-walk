@@ -145,9 +145,7 @@ export default function SingleEvent() {
                 </Row>
                 <Divider className="  border-white" />
                 <Row justify="start" className="mt-5 ">
-                  <Col>
-                    <Comment />
-                  </Col>
+                  <Col>{/* <Comment project={projectInfo}/> */}</Col>
                 </Row>
               </Col>
             </Row>

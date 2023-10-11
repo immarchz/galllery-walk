@@ -17,14 +17,14 @@ import { DeleteOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
 interface DataType {
-  key: string;
+  // key: string;
   projectname: string;
-  price: string[];
+  price: string;
   linkto: string;
 }
 
 export default function Leaderboard() {
-  const [dataSource, setdataSource] = useState([
+  const [dataSource, setdataSource] = useState<DataType[]>([
     {
       projectname: "TEST PROJECT NAME 1",
       price: "10000",
@@ -56,7 +56,8 @@ export default function Leaderboard() {
       dataIndex: "projectname",
       key: "2",
       render: (text, record) => (
-        <Link href={`${dataSource.linkto}`}>{text}</Link>
+        // <Link href={`${dataSource.linkto}`}>{text}</Link>
+        <Link href={`/`}>{text}</Link>
       ),
     },
 
