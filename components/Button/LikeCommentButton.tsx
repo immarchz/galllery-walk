@@ -70,7 +70,7 @@ export default function LikeCommentButton({
 
   return (
     <Button
-      className="bg-white text-black hover:bg-white"
+      className="bg-white text-black hover:bg-white flex items-center"
       onClick={isUserLike ? dislike : like}
     >
       {isUserLike ? "💔" : "❤️"}

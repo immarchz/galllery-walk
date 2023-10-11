@@ -35,7 +35,7 @@ export default function ProjectRender({ projects }: { projects: Project[] }) {
           >
             <Card
               title={<Meta title={item.title} className="my-1" />}
-              style={{ width: 300 }}
+              style={{ width: 300, height: 400 }}
               cover={
                 <Image
                   alt=""
