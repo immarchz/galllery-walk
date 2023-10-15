@@ -5,7 +5,7 @@ import {
   PaperClipOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
-import { Button, Col, Divider, Row } from "antd";
+import { Button, Card, Col, Divider, Row } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import Comment from "@/components/Comment";
@@ -47,14 +47,17 @@ export default async function ProjectPage({
     <div className="text-white mx-10 mb-10">
       <Row gutter={[24, 24]} justify={"center"}>
         <Col xl={{ span: 18 }}>
-          <Image
-            src={project.display_image}
-            alt="Event Pic"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "50" }}
-          />
+          <Card>
+            <Image
+              src={project.display_image}
+              alt="Event Pic"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "100%", height: "50" }}
+            />
+          </Card>
+
           <Row justify="start" className="mt-5 mb-3">
             <Col className="2xl:text-[20px]">{project.title}</Col>
           </Row>
