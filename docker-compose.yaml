@@ -10,7 +10,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: db
-      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_HOST: mongo
       MONGO_REPLICA_PORT: 27017
     ports:
       - "27017:27017"
@@ -18,16 +18,20 @@ services:
       - aa
     volumes:
       - ./db:/data/db
-    # network_mode: host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   web:
     command: npm run production
     container_name: next-docker-production
+    links:
+      - mongo
     environment:
-      NEXTAUTH_SECRET: pR6BGKqs/EF1WrbfNdw98Y/hBa8It5wOjmsej3ZF220=
-      # DATABASE_URL: mongodb://admin:password@mongo:27017/db?authSource=admin
-      DATABASE_URL: mongodb+srv://Prisma:idr8Se7IFGQbpBLh@cluster0.2tnkjsr.mongodb.net/mydb?retryWrites=true&w=majority
-      GOOGLE_CLIENT_ID: 834755766051-ossb8mkr5pont9plkkt2ln3sgi9b48af.apps.googleusercontent.com
-      GOOGLE_CLIENT_SECRET: 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
+      - NEXTAUTH_SECRET=pR6BGKqs/EF1WrbfNdw98Y/hBa8It5wOjmsej3ZF220=
+      - DATABASE_URL=mongodb://admin:password@192.168.96.2:27017/db?authSource=admin
+      # DATABASE_URL=mongodb+srv://Prisma:idr8Se7IFGQbpBLh@cluster0.2tnkjsr.mongodb.net/mydb?retryWrites=true&w=majority
+      - GOOGLE_CLIENT_ID=834755766051-ossb8mkr5pont9plkkt2ln3sgi9b48af.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
     volumes:
       - ./:/app
       - /app/node_modules
@@ -37,11 +41,7 @@ services:
     networks:
       - aa
     build: .
-# networks:
-#   NETWORK:
-#     external: true
-# networks:
-#   some-net:
-#     driver: bridge
-#   front_some-net:
-#     driver: bridge
+    depends_on:
+      - mongo
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
