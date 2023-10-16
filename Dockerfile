@@ -4,7 +4,7 @@ FROM node:20-alpine3.17
 
 WORKDIR /app
 COPY . .
-ARG DATABASE_URL=mongodb://admin:password@mongo:27017/db?authSource=admin
+# ARG DATABASE_URL=mongodb://admin:password@mongo:27017/db?authSource=admin
 RUN npm install
 # RUN npx prisma generate
 # CMD ["npx", "prisma", "generate"]

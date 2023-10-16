@@ -21,27 +21,27 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  web:
-    command: npm run production
-    container_name: next-docker-production
-    links:
-      - mongo
-    environment:
-      - NEXTAUTH_SECRET=pR6BGKqs/EF1WrbfNdw98Y/hBa8It5wOjmsej3ZF220=
-      - DATABASE_URL=mongodb://admin:password@192.168.96.2:27017/db?authSource=admin
-      # DATABASE_URL=mongodb+srv://Prisma:idr8Se7IFGQbpBLh@cluster0.2tnkjsr.mongodb.net/mydb?retryWrites=true&w=majority
-      - GOOGLE_CLIENT_ID=834755766051-ossb8mkr5pont9plkkt2ln3sgi9b48af.apps.googleusercontent.com
-      - GOOGLE_CLIENT_SECRET=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
-    volumes:
-      - ./:/app
-      - /app/node_modules
-      - /app/.next
-    ports:
-      - "3000:3000"
-    networks:
-      - aa
-    build: .
-    depends_on:
-      - mongo
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+  # web:
+  #   command: npm run production
+  #   container_name: next-docker-production
+  #   links:
+  #     - mongo
+  #   environment:
+  #     - NEXTAUTH_SECRET=pR6BGKqs/EF1WrbfNdw98Y/hBa8It5wOjmsej3ZF220=
+  #     - DATABASE_URL=mongodb://admin:password@192.168.96.2:27017/db?authSource=admin
+  #     # DATABASE_URL=mongodb+srv://Prisma:idr8Se7IFGQbpBLh@cluster0.2tnkjsr.mongodb.net/mydb?retryWrites=true&w=majority
+  #     - GOOGLE_CLIENT_ID=834755766051-ossb8mkr5pont9plkkt2ln3sgi9b48af.apps.googleusercontent.com
+  #     - GOOGLE_CLIENT_SECRET=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
+  #   volumes:
+  #     - ./:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - aa
+  #   build: .
+  #   depends_on:
+  #     - mongo
+  #   extra_hosts:
+  #     - "host.docker.internal:host-gateway"
