@@ -43,6 +43,14 @@ export default async function ProjectPage({
     );
   }
 
+  const event = await prisma.event.findFirst({
+    where: {
+      id: {
+        equals: params.slug,
+      },
+    },
+  });
+
   return (
     <div className="text-white mx-10 mb-10">
       <Row gutter={[24, 24]} justify={"center"}>
@@ -145,7 +153,7 @@ export default async function ProjectPage({
           <Divider className="  border-white" />
           <Row justify="start" className="mt-5 ">
             <Col span={24}>
-              <Comment project={project} />
+              <Comment project={project} event={event!} />
             </Col>
           </Row>
         </Col>

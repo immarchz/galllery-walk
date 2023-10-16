@@ -4,9 +4,6 @@ import { prisma } from "@/lib/prisma";
 import { checkServerSession } from "@/utils/checkServerSession";
 import { findUserWithSession } from "@/utils/findUserWithSession";
 
-import { getServerSession } from "next-auth";
-
-import { redirect } from "next/navigation";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -4,13 +4,16 @@ import { Button, Card, Col, Input, Row } from "antd";
 
 import Image from "next/image";
 import CommentForm from "./Form/CommentForm";
-import { Comment, Like, Project, User } from "@prisma/client";
+import { Comment, Event, Like, Project, User } from "@prisma/client";
 import LikeCommentButton from "./Button/LikeCommentButton";
+import DonateForm from "./Form/DonateForm";
 
 export default async function Comment({
   project,
+  event,
 }: {
   project: Project & { comments: (Comment & { user: User; likes: Like[] })[] };
+  event: Event;
 }) {
   const session = await checkServerSession();
   const user = await findUserWithSession(session);
@@ -32,14 +35,7 @@ export default async function Comment({
         </Col>
         <Col xl={{ span: 0 }} xs={{ span: 8 }}></Col>
         <Col xl={{ span: 6 }} xs={{ span: 16 }}>
-          <Card title="Donate" style={{ height: 170, width: "100%" }}>
-            <Row>
-              <Input className="mb-2"></Input>
-            </Row>
-            <Row justify={"center"}>
-              <Button>Donate</Button>
-            </Row>
-          </Card>
+          <DonateForm event={event} project={project} user={user!} />
         </Col>
       </Row>
       {project.comments.map((comment, index: number) => (

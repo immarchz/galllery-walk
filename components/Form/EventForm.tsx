@@ -8,6 +8,7 @@ import { Button, Card, Col, Form, Input, Row, Upload, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { toast } from "react-toastify";
 import InputImage from "../InputImage";
+import { useRouter } from "next/navigation";
 
 export default function EventForm({
   user,
@@ -47,7 +48,7 @@ export default function EventForm({
         },
       }),
       {
-        pending: "Toasss",
+        pending: "Update event",
         error: "",
         success: "done",
       },
@@ -85,7 +86,7 @@ export default function EventForm({
         },
       }),
       {
-        pending: "Toasss",
+        pending: "Create event",
         error: "",
         success: "done",
       },
@@ -93,8 +94,6 @@ export default function EventForm({
         position: toast.POSITION.BOTTOM_RIGHT,
       }
     );
-
-    // await res.json();
   };
 
   const config = {
@@ -264,9 +263,9 @@ export default function EventForm({
 
                         <Row>
                           <input
-                          style={{
-                            width: "100%",
-                          }}
+                            style={{
+                              width: "100%",
+                            }}
                             type="datetime-local"
                             name="event_start"
                             defaultValue={event?.event_start ?? ""}

@@ -7,6 +7,9 @@ export async function findUserWithSession(session: Session) {
     where: {
       email: currentUserEmail,
     },
+    include: {
+      transactions: true,
+    },
   });
   return user;
 }
