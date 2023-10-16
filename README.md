@@ -1,9 +1,9 @@
 Technology Stack
 ```
 Frontend : Next.js
-Api :
-Database :
-authentication :
+Api : Next.js
+Database : Mongodb
+authentication : Google Oauth
 ```
 
 ## Getting Started
