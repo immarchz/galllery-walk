@@ -1,3 +1,11 @@
+Technology Stack
+```
+Frontend : Next.js
+Api :
+Database :
+authentication :
+```
+
 ## Getting Started
 
 First, setup docker then run docker compose:
@@ -32,3 +40,15 @@ run the production server:
 ```bash
 npm run production
 ```
+Members
+```
+Korrawit Opassamutchai 630615017
+Nichapat Thammawit 630615027
+Pollachaet Putthapanasub 630615034
+Pheerawadee Chantakhat 630615036
+Yooradet Khamon 630615037
+Sorawich Yeampraseot 630615042
+Sunida Riensakunudee 630615043
+Arissawat Tresresiri 630615045
+```
+
