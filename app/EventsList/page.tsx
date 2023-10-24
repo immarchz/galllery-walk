@@ -176,7 +176,7 @@ export default function EventsList() {
           </Col>
         </Row>
 
-        <Row className="mb-10 text-xl" justify={"center"}>
+        {/* <Row className="mb-10 text-xl" justify={"center"}>
           Incoming Events
         </Row>
         <Row gutter={[24, 24]} justify={"center"}>
@@ -221,9 +221,9 @@ export default function EventsList() {
           <Col span={22}>
             <Divider className=" h-4  border-white" />
           </Col>
-        </Row>
+        </Row> */}
 
-        <Row className="mb-10 text-xl" justify={"center"}>
+        {/* <Row className="mb-10 text-xl" justify={"center"}>
           Completed Events
         </Row>
         <Row gutter={[24, 24]} justify={"center"}>
@@ -262,12 +262,13 @@ export default function EventsList() {
                 </>
               )
             )}
-          </Row>
-          <Row justify={"center"} className="my-16">
-            <Link href="/event/create">
-              <Button className=" bg-white">Create Event</Button>
-            </Link>
-          </Row>
+          </Row> 
+          
+        </Row>*/}
+        <Row justify={"center"} className="my-10">
+          <Link href="/event/create">
+            <Button className=" bg-white">Create Event</Button>
+          </Link>
         </Row>
       </div>
     );
@@ -282,7 +283,7 @@ export default function EventsList() {
           {currentEvent.map(
             (event: currentEventListInterface, index: number) => (
               <>
-                <Col span={12}>
+                <Col span={12} >
                   <Row>
                     <Col>
                       <Link href={event.linkTo}>
@@ -321,7 +322,7 @@ export default function EventsList() {
         </Col>
       </Row>
 
-      <Row className="mb-10 text-xl" justify={"center"}>
+      {/* <Row className="mb-10 text-xl" justify={"center"}>
         Incoming Events
       </Row>
       <Row gutter={[24, 24]} justify={"center"}>
@@ -366,9 +367,9 @@ export default function EventsList() {
         <Col span={22}>
           <Divider className=" h-4  border-white" />
         </Col>
-      </Row>
+      </Row> */}
 
-      <Row className="mb-10 text-xl" justify={"center"}>
+      {/* <Row className="mb-10 text-xl" justify={"center"}>
         Completed Events
       </Row>
       <Row gutter={[24, 24]} justify={"center"}>
@@ -407,8 +408,8 @@ export default function EventsList() {
               </>
             )
           )}
-        </Row>
-      </Row>
+        </Row> 
+      </Row>*/}
     </div>
   );
 }

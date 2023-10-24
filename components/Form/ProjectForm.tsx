@@ -159,7 +159,7 @@ export default function ProjectForm({
     //   <InputImage name="image" placeholder={project?.display_image} required />
     //   <button type="submit">{create ? "createproject" : "editproject"}</button>
     // </form>
-    <div className="mx-10">
+    <div className="mx-10 mb-10">
       <form onSubmit={create ? createProject : updateProject}>
         <Row justify={"center"} gutter={[24, 24]} className="">
           <Col xs={24} xl={8}>
@@ -167,7 +167,7 @@ export default function ProjectForm({
               className="text-white"
               style={{
                 width: "100%",
-                height: 1051,
+                height: 800,
                 backgroundColor: "#1E1E1E",
                 border: "none",
               }}
@@ -239,7 +239,7 @@ export default function ProjectForm({
               className="text-white "
               style={{
                 width: "100%",
-                height: 1051,
+                height: 800,
                 backgroundColor: "#1E1E1E",
                 border: "none",
                 color: "white",
