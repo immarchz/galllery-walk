@@ -15,6 +15,10 @@ import type { ColumnsType } from "antd/es/table";
 import { DeleteOutlined } from "@ant-design/icons";
 import { EventCRUD, User } from "@prisma/client";
 import CreateProjectPermissionButton from "@/components/Button/CreateProjectPermissionButton";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { getServerSideUser } from "@/helper/getCurrentUser";
+import { useRouter } from "next/navigation";
 
 // interface DataType {
 //   key: string;
@@ -31,8 +35,19 @@ async function getUsers() {
 }
 
 export default async function Admin() {
+  const session = await getServerSession(authOptions);
+  const user = await getServerSideUser(session);
+  if (!user) {
+    window.location.pathname = process.env.NEXT_PUBLIC_BASE_URL as string;
+  }
+
+  const allow = JSON.parse(process.env.AUTH_ADMIN as string) as string[];
+
+  if (!allow.includes(user?.email!)) {
+    window.location.pathname = process.env.NEXT_PUBLIC_BASE_URL as string;
+  }
+
   const users = await getUsers();
-  console.log(users);
 
   // const [dataSource, setdataSource] = useState([
   //   {
