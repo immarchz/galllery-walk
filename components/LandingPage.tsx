@@ -17,7 +17,7 @@ const contentStyle: React.CSSProperties = {
 
 async function getEvents() {
   const events = await (
-    await fetch("http://localhost:3000/api/event", {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/event`, {
       cache: "no-cache",
     })
   ).json();
@@ -30,8 +30,6 @@ export default async function LandingPage() {
   //   const events = eventArr;
   const events = await getEvents();
   const showevents = events.slice(0, 3);
-
-  console.log(typeof events[0].event_start);
 
   return (
     <div className="bg-black ">
