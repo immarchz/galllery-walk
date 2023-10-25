@@ -31,7 +31,7 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </div>
           <div className="flex text-white items-center xl:text-xl">
-            <Link href="/EventsList">Events</Link>
+            <Link href="/event">Events</Link>
           </div>
         </div>
 

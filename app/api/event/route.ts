@@ -6,11 +6,18 @@ import { authOptions } from "../auth/[...nextauth]/route";
 export async function GET(req: Request) {
   const session = await getServerSession(authOptions);
 
-  if (!session) {
-    return NextResponse.redirect("/");
-  }
+  // if (!session) {
+  //   return NextResponse.redirect("/");
+  // }
 
-  const events = await prisma.event.findMany();
+  const events = await prisma.event.findMany({
+    orderBy: {
+      event_start: "desc",
+    },
+    include: {
+      eventPermissions: true,
+    },
+  });
 
   return NextResponse.json(events);
 }

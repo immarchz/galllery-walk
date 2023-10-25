@@ -22,6 +22,21 @@ export async function POST(req: Request) {
   };
   data.amount = parseInt(data.amount);
 
+  const project = await prisma.project.findUnique({
+    where: {
+      id: data.id!,
+    },
+  });
+
+  await prisma.project.update({
+    where: {
+      id: data.id!,
+    },
+    data: {
+      money: project!.money + data.amount,
+    },
+  });
+
   delete data.id;
   delete data.user_id;
 

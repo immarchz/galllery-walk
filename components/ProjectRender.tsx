@@ -7,7 +7,13 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
-export default function ProjectRender({ projects }: { projects: Project[] }) {
+export default function ProjectRender({
+  projects,
+  showMoney,
+}: {
+  projects: Project[];
+  showMoney?: boolean;
+}) {
   return (
     <List
       className=""
@@ -45,7 +51,7 @@ export default function ProjectRender({ projects }: { projects: Project[] }) {
                 />
               }
             >
-              {item.abstract}
+              {showMoney ? item.money : item.abstract}
             </Card>
           </Link>
         </List.Item>

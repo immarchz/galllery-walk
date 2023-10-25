@@ -11,7 +11,7 @@ import QrCode from "@/components/QrCode";
 import JoinEventButton from "@/components/Button/JoinEventButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { Event } from "@prisma/client";
+import { Event, Project } from "@prisma/client";
 import Meta from "antd/es/card/Meta";
 import ProjectRender from "@/components/ProjectRender";
 
@@ -93,6 +93,30 @@ export default async function EventPage({
                       style={{ width: "100%", height: "100%" }}
                     />
                   </Col>
+                </Row>
+                <Row justify={"center"} className="mt-5 mb-3">
+                  <Col
+                    xl={{ span: 16 }}
+                    xs={{ span: 24 }}
+                    className="xl:text-xl sm:text-lg "
+                  >
+                    Top Projects
+                  </Col>
+                </Row>
+                <Row justify={"center"}>
+                  {event.projects.length > 0 ? (
+                    <ProjectRender
+                      projects={(event.projects as Array<Project>).sort(
+                        (a: Project, b: Project) => {
+                          return a.money < b.money ? 1 : -1;
+                        }
+                      )}
+                      showMoney
+                    />
+                  ) : (
+                    // eslint-disable-next-line react/no-unescaped-entities
+                    <div>we don't have project now</div>
+                  )}
                 </Row>
                 <Row justify={"center"} className="mt-5 mb-3">
                   <Col

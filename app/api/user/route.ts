@@ -3,6 +3,16 @@ import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/prisma";
 import { authOptions } from "../auth/[...nextauth]/route";
 
+export async function GET(req: Request) {
+  const user = await prisma.user.findMany({
+    include: {
+      eventCRUD: true,
+    },
+  });
+
+  return NextResponse.json(user);
+}
+
 export async function PUT(req: Request) {
   const session = await getServerSession(authOptions);
   const currentUserEmail = session?.user?.email!;

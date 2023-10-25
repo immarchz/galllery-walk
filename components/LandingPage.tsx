@@ -15,11 +15,23 @@ const contentStyle: React.CSSProperties = {
   justifyContent: "center",
 };
 
+async function getEvents() {
+  const events = await (
+    await fetch("http://localhost:3000/api/event", {
+      cache: "no-cache",
+    })
+  ).json();
+
+  return events;
+}
+
 export default async function LandingPage() {
   //   const showevents = maineventsArr;
   //   const events = eventArr;
-  const events = await prisma.event.findMany();
+  const events = await getEvents();
   const showevents = events.slice(0, 3);
+
+  console.log(typeof events[0].event_start);
 
   return (
     <div className="bg-black ">
