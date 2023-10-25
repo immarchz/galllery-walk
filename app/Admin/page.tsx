@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import type { ColumnsType } from "antd/es/table";
 import { DeleteOutlined } from "@ant-design/icons";
 import { EventCRUD, User } from "@prisma/client";
+import CreateProjectPermissionButton from "@/components/Button/CreateProjectPermissionButton";
 
 // interface DataType {
 //   key: string;
@@ -134,7 +135,9 @@ export default async function Admin() {
                     <tr key={user.id}>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
-                      <td>{user.eventCRUD.length > 0 ? "✅" : "❗"}</td>
+                      <td>
+                        <CreateProjectPermissionButton user={user} />
+                      </td>
                     </tr>
                   );
                 })}

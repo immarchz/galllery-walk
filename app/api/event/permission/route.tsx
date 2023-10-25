@@ -34,3 +34,20 @@ export async function POST(req: Request) {
     return NextResponse.json(transaction);
   }
 }
+
+export async function DELETE(req: Request) {
+  //   const session = await getServerSession(authOptions);
+  //   if (!session) {
+  //     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  //   }
+
+  const data = await req.json();
+
+  const transaction = await prisma.eventCRUD.deleteMany({
+    where: {
+      userId: data.user_id,
+    },
+  });
+
+  return NextResponse.json(transaction);
+}
