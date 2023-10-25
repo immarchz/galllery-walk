@@ -94,30 +94,30 @@ export default async function EventPage({
                     />
                   </Col>
                 </Row>
-                <Row justify={"center"} className="mt-5 mb-3">
-                  <Col
-                    xl={{ span: 16 }}
-                    xs={{ span: 24 }}
-                    className="xl:text-xl sm:text-lg "
-                  >
-                    Top Projects
-                  </Col>
-                </Row>
-                <Row justify={"center"}>
-                  {event.projects.length > 0 ? (
-                    <ProjectRender
-                      projects={(event.projects as Array<Project>).sort(
-                        (a: Project, b: Project) => {
-                          return a.money < b.money ? 1 : -1;
-                        }
-                      )}
-                      showMoney
-                    />
-                  ) : (
-                    // eslint-disable-next-line react/no-unescaped-entities
-                    <div>we don't have project now</div>
-                  )}
-                </Row>
+                {event.projects.length > 0 ? (
+                  <>
+                    {" "}
+                    <Row justify={"center"} className="mt-5 mb-3">
+                      <Col
+                        xl={{ span: 16 }}
+                        xs={{ span: 24 }}
+                        className="xl:text-xl sm:text-lg "
+                      >
+                        Top Projects
+                      </Col>
+                    </Row>
+                    <Row justify={"center"}>
+                      <ProjectRender
+                        projects={(event.projects as Array<Project>).sort(
+                          (a: Project, b: Project) => {
+                            return a.money < b.money ? 1 : -1;
+                          }
+                        )}
+                        showMoney
+                      />
+                    </Row>
+                  </>
+                ) : null}
                 <Row justify={"center"} className="mt-5 mb-3">
                   <Col
                     xl={{ span: 16 }}
