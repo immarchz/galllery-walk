@@ -8,6 +8,7 @@ import { Button, Card, Col, Form, Input, Row, Upload, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { toast } from "react-toastify";
 import InputImage from "../InputImage";
+import { useRouter } from "next/navigation";
 
 export default function ProjectForm({
   user,
@@ -20,6 +21,8 @@ export default function ProjectForm({
   project: any;
   create?: boolean;
 }) {
+  const router = useRouter();
+
   const updateProject = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -52,6 +55,8 @@ export default function ProjectForm({
         position: toast.POSITION.BOTTOM_RIGHT,
       }
     );
+
+    router.replace(`${process.env.NEXT_PUBLIC_BASE_URL}/event/${event_id}`);
   };
 
   const createProject = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -87,6 +92,7 @@ export default function ProjectForm({
         position: toast.POSITION.BOTTOM_RIGHT,
       }
     );
+    router.replace(`${process.env.NEXT_PUBLIC_BASE_URL}/event/${event_id}`);
 
     // await res.json();
   };

@@ -19,6 +19,8 @@ export default function EventForm({
   event: any;
   create?: boolean;
 }) {
+  const router = useRouter();
+
   const updateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -56,6 +58,8 @@ export default function EventForm({
         position: toast.POSITION.BOTTOM_RIGHT,
       }
     );
+
+    router.replace(`${process.env.NEXT_PUBLIC_BASE_URL}/event`);
   };
 
   const createEvent = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -94,6 +98,8 @@ export default function EventForm({
         position: toast.POSITION.BOTTOM_RIGHT,
       }
     );
+
+    router.replace(`${process.env.NEXT_PUBLIC_BASE_URL}/event`);
   };
 
   const config = {
