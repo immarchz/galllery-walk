@@ -17,25 +17,26 @@ export default function CreateProjectPermissionButton({
       user_id: user.id,
     };
 
-    await toast.promise(
-      fetch("/api/event/permission", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }),
-      {
-        pending: "Joining event ..",
-        error: "",
-        success: "done",
+    fetch("/api/event/permission", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
       },
-      {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      }
-    );
+    }),
+      // await toast.promise(
 
-    router.refresh();
+      //   {
+      //     pending: "Joining event ..",
+      //     error: "",
+      //     success: "done",
+      //   },
+      //   {
+      //     position: toast.POSITION.BOTTOM_RIGHT,
+      //   }
+      // );
+
+      router.refresh();
   }
   async function disJoinEvent() {
     const data = {

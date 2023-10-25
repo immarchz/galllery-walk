@@ -18,7 +18,7 @@ import CreateProjectPermissionButton from "@/components/Button/CreateProjectPerm
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getServerSideUser } from "@/helper/getCurrentUser";
-import Router from "next/navigation";
+import { redirect } from "next/navigation";
 
 // interface DataType {
 //   key: string;
@@ -38,13 +38,13 @@ export default async function Admin() {
   const session = await getServerSession(authOptions);
   const user = await getServerSideUser(session);
   if (!user) {
-    Router.redirect(process.env.NEXT_PUBLIC_BASE_URL as string);
+    redirect(process.env.NEXT_PUBLIC_BASE_URL as string);
   }
 
   const allow = JSON.parse(process.env.AUTH_ADMIN as string) as string[];
 
   if (!allow.includes(user?.email!)) {
-    Router.redirect(process.env.NEXT_PUBLIC_BASE_URL as string);
+    redirect(process.env.NEXT_PUBLIC_BASE_URL as string);
   }
 
   const users = await getUsers();
